@@ -35,6 +35,8 @@
 		108155D41730A0AA00BEFCB1 /* libBNSortedDataController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395D8172750E100037F1D /* libBNSortedDataController.a */; };
 		10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 		10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
+		10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19817314AE30056A99D /* BNSortedTableTests.m */; };
+		10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,10 @@
 		108155CD17309F2C00BEFCB1 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableViewController.h; sourceTree = "<group>"; };
 		10A2B1901730B2540056A99D /* BNSortedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableViewController.m; sourceTree = "<group>"; };
+		10A2B19717314AE30056A99D /* BNSortedTableTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableTests.h; sourceTree = "<group>"; };
+		10A2B19817314AE30056A99D /* BNSortedTableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableTests.m; sourceTree = "<group>"; };
+		10A2B19A17314AEF0056A99D /* BNSortedSectionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedSectionTests.h; sourceTree = "<group>"; };
+		10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedSectionTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +202,9 @@
 		106395F2172750E200037F1D /* BNSortedDataControllerTests */ = {
 			isa = PBXGroup;
 			children = (
-				106395F8172750E200037F1D /* BNSortedDataControllerTests.h */,
-				106395F9172750E200037F1D /* BNSortedDataControllerTests.m */,
+				10A2B19417314AAA0056A99D /* Model */,
+				10A2B19517314AAF0056A99D /* Controller */,
+				10A2B19617314AC10056A99D /* View Controller */,
 				106395F3172750E200037F1D /* Supporting Files */,
 			);
 			path = BNSortedDataControllerTests;
@@ -265,6 +272,33 @@
 			children = (
 				10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */,
 				10A2B1901730B2540056A99D /* BNSortedTableViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		10A2B19417314AAA0056A99D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10A2B19717314AE30056A99D /* BNSortedTableTests.h */,
+				10A2B19817314AE30056A99D /* BNSortedTableTests.m */,
+				10A2B19A17314AEF0056A99D /* BNSortedSectionTests.h */,
+				10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		10A2B19517314AAF0056A99D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				106395F8172750E200037F1D /* BNSortedDataControllerTests.h */,
+				106395F9172750E200037F1D /* BNSortedDataControllerTests.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		10A2B19617314AC10056A99D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -412,6 +446,8 @@
 				10639606172754A200037F1D /* BNSortedTable.m in Sources */,
 				1063960A172754BA00037F1D /* BNSortedSection.m in Sources */,
 				10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */,
+				10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */,
+				10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
