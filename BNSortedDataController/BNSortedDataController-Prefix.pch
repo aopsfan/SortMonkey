@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'BNSortedDataController' target in the 'BNSortedDataController' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
