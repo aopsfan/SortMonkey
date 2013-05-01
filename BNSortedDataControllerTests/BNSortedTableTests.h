@@ -7,7 +7,8 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "BNSortedTable.h"
 
 @interface BNSortedTableTests : SenTestCase
-
+@property (strong, nonatomic)BNSortedTable *sortedTable;
 @end
