@@ -30,16 +30,24 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.sortedDataController numberOfSections];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.sortedDataController numberOfRowsInSection:section];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id<BNSortableData> identifier = [self.sortedDataController identifierForSection:section];
+    
+    if ([identifier isKindOfClass:[NSString class]]) {
+        return (NSString *)identifier;
+    } else if ([identifier isKindOfClass:[NSNumber class]]) {
+        return [(NSNumber *)identifier stringValue];
+    }
+    
+    return nil;
 }
 
 @end

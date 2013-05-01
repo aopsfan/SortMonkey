@@ -15,7 +15,7 @@
     return [self.name compare:otherFood.name];
 }
 
-+ (Food *)foodWithName:(NSString *)name category:(Category *)category {
++ (Food *)foodWithName:(NSString *)name category:(NSString *)category {
     Food *food = [[Food alloc] init];
     food.name = name;
     food.category = category;

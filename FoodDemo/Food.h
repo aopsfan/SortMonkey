@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "BNSortableData.h"
 
-@class Category;
 @interface Food : NSObject <BNSortableData>
 @property (weak, nonatomic)NSString *name;
-@property (strong, nonatomic)Category *category;
+@property (strong, nonatomic)NSString *category;
 
-+ (Food *)foodWithName:(NSString *)name category:(Category *)category;
++ (Food *)foodWithName:(NSString *)name category:(NSString *)category;
 
 @end

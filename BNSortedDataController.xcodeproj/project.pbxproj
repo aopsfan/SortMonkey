@@ -32,7 +32,6 @@
 		108155C517309E0A00BEFCB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 108155C417309E0A00BEFCB1 /* Default-568h@2x.png */; };
 		108155CB17309E3700BEFCB1 /* FoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CA17309E3700BEFCB1 /* FoodsViewController.m */; };
 		108155CE17309F2C00BEFCB1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
-		108155D117309F4F00BEFCB1 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155D017309F4F00BEFCB1 /* Category.m */; };
 		108155D41730A0AA00BEFCB1 /* libBNSortedDataController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395D8172750E100037F1D /* libBNSortedDataController.a */; };
 		10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 		10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
@@ -102,8 +101,6 @@
 		108155CA17309E3700BEFCB1 /* FoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodsViewController.m; sourceTree = "<group>"; };
 		108155CC17309F2C00BEFCB1 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		108155CD17309F2C00BEFCB1 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
-		108155CF17309F4F00BEFCB1 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
-		108155D017309F4F00BEFCB1 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableViewController.h; sourceTree = "<group>"; };
 		10A2B1901730B2540056A99D /* BNSortedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,8 +239,6 @@
 				108155BE17309E0A00BEFCB1 /* AppDelegate.m */,
 				108155CC17309F2C00BEFCB1 /* Food.h */,
 				108155CD17309F2C00BEFCB1 /* Food.m */,
-				108155CF17309F4F00BEFCB1 /* Category.h */,
-				108155D017309F4F00BEFCB1 /* Category.m */,
 				108155C917309E3700BEFCB1 /* FoodsViewController.h */,
 				108155CA17309E3700BEFCB1 /* FoodsViewController.m */,
 				108155B517309E0A00BEFCB1 /* Supporting Files */,
@@ -428,7 +423,6 @@
 				108155BF17309E0A00BEFCB1 /* AppDelegate.m in Sources */,
 				108155CB17309E3700BEFCB1 /* FoodsViewController.m in Sources */,
 				108155CE17309F2C00BEFCB1 /* Food.m in Sources */,
-				108155D117309F4F00BEFCB1 /* Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

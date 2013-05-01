@@ -9,7 +9,6 @@
 #import "FoodsViewController.h"
 #import "BNSortedDataController.h"
 #import "Food.h"
-#import "Category.h"
 
 @implementation FoodsViewController
 
@@ -17,27 +16,22 @@
 {
     self = [super initWithStyle:style];
     if (self) {        
-        Category *fruits = [Category categoryWithName:@"Fruits"];
-        Category *vegetables = [Category categoryWithName:@"Vegetables"];
-        Category *dairy = [Category categoryWithName:@"Dairy"];
-        Category *meats = [Category categoryWithName:@"Meats"];
+        Food *apple = [Food foodWithName:@"Apple" category:@"Fruits"];
+        Food *orange = [Food foodWithName:@"Orange" category:@"Fruits"];
+        Food *mango = [Food foodWithName:@"Mango" category:@"Fruits"];
+        Food *pineapple = [Food foodWithName:@"Pineapple" category:@"Fruits"];
         
-        Food *apple = [Food foodWithName:@"Apple" category:fruits];
-        Food *orange = [Food foodWithName:@"Orange" category:fruits];
-        Food *mango = [Food foodWithName:@"Mango" category:fruits];
-        Food *pineapple = [Food foodWithName:@"Pineapple" category:fruits];
+        Food *tomato = [Food foodWithName:@"Tomato" category:@"Vegetables"];
+        Food *cucumber = [Food foodWithName:@"Cucumber" category:@"Vegetables"];
+        Food *greenBeans = [Food foodWithName:@"Green Beans" category:@"Vegetables"];
         
-        Food *tomato = [Food foodWithName:@"Tomato" category:vegetables];
-        Food *cucumber = [Food foodWithName:@"Cucumber" category:vegetables];
-        Food *greenBeans = [Food foodWithName:@"Green Beans" category:vegetables];
+        Food *milk = [Food foodWithName:@"Milk" category:@"Dairy"];
+        Food *cheese = [Food foodWithName:@"Cheese" category:@"Dairy"];
         
-        Food *milk = [Food foodWithName:@"Milk" category:dairy];
-        Food *cheese = [Food foodWithName:@"Cheese" category:dairy];
-        
-        Food *pork = [Food foodWithName:@"Pork" category:meats];
-        Food *bacon = [Food foodWithName:@"Bacon" category:meats];
-        Food *burger = [Food foodWithName:@"Burger" category:meats];
-        Food *steak = [Food foodWithName:@"Steak" category:meats];
+        Food *pork = [Food foodWithName:@"Pork" category:@"Meats"];
+        Food *bacon = [Food foodWithName:@"Bacon" category:@"Meats"];
+        Food *burger = [Food foodWithName:@"Burger" category:@"Meats"];
+        Food *steak = [Food foodWithName:@"Steak" category:@"Meats"];
         
         self.sortedDataController.objects = @[ apple, orange, mango, pineapple, tomato, cucumber, greenBeans, milk, cheese, pork, bacon, burger, steak ];
         self.sortedDataController.sortKey = @"category";
@@ -48,11 +42,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    Category *category = [self.sortedDataController identifierForSection:section];
-    return category.name;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
