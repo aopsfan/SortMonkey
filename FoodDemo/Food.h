@@ -14,5 +14,6 @@
 @property (strong, nonatomic)NSString *category;
 
 + (Food *)foodWithName:(NSString *)name category:(NSString *)category;
++ (NSArray *)sampleFoods;
 
 @end

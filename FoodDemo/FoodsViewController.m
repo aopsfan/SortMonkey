@@ -15,25 +15,8 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {        
-        Food *apple = [Food foodWithName:@"Apple" category:@"Fruits"];
-        Food *orange = [Food foodWithName:@"Orange" category:@"Fruits"];
-        Food *mango = [Food foodWithName:@"Mango" category:@"Fruits"];
-        Food *pineapple = [Food foodWithName:@"Pineapple" category:@"Fruits"];
-        
-        Food *tomato = [Food foodWithName:@"Tomato" category:@"Vegetables"];
-        Food *cucumber = [Food foodWithName:@"Cucumber" category:@"Vegetables"];
-        Food *greenBeans = [Food foodWithName:@"Green Beans" category:@"Vegetables"];
-        
-        Food *milk = [Food foodWithName:@"Milk" category:@"Dairy"];
-        Food *cheese = [Food foodWithName:@"Cheese" category:@"Dairy"];
-        
-        Food *pork = [Food foodWithName:@"Pork" category:@"Meats"];
-        Food *bacon = [Food foodWithName:@"Bacon" category:@"Meats"];
-        Food *burger = [Food foodWithName:@"Burger" category:@"Meats"];
-        Food *steak = [Food foodWithName:@"Steak" category:@"Meats"];
-        
-        self.sortedDataController.objects = @[ apple, orange, mango, pineapple, tomato, cucumber, greenBeans, milk, cheese, pork, bacon, burger, steak ];
+    if (self) {
+        self.sortedDataController.objects = [Food sampleFoods];
         self.sortedDataController.sortKey = @"category";
         
         self.title = @"Foods";
