@@ -7,7 +7,8 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "BNSortedDataController.h"
 
 @interface BNSortedDataControllerTests : SenTestCase
-
+@property (strong, nonatomic)BNSortedDataController *sortedDataController;
 @end

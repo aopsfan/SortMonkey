@@ -37,6 +37,7 @@
 		10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 		10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19817314AE30056A99D /* BNSortedTableTests.m */; };
 		10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */; };
+		10A2B19D17315F110056A99D /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,6 +449,7 @@
 				10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */,
 				10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */,
 				10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */,
+				10A2B19D17315F110056A99D /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
