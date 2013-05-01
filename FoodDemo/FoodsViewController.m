@@ -11,18 +11,12 @@
 #import "Food.h"
 #import "Category.h"
 
-@interface FoodsViewController ()
-@property (strong, nonatomic)BNSortedDataController *sortedDataController;
-@end
-
 @implementation FoodsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        _sortedDataController = [[BNSortedDataController alloc] init];
-        
+    if (self) {        
         Category *fruits = [Category categoryWithName:@"Fruits"];
         Category *vegetables = [Category categoryWithName:@"Vegetables"];
         Category *dairy = [Category categoryWithName:@"Dairy"];
@@ -54,14 +48,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.sortedDataController numberOfSections];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.sortedDataController numberOfRowsInSection:section];
-}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     Category *category = [self.sortedDataController identifierForSection:section];

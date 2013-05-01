@@ -34,6 +34,8 @@
 		108155CE17309F2C00BEFCB1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
 		108155D117309F4F00BEFCB1 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155D017309F4F00BEFCB1 /* Category.m */; };
 		108155D41730A0AA00BEFCB1 /* libBNSortedDataController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395D8172750E100037F1D /* libBNSortedDataController.a */; };
+		10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
+		10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		108155CD17309F2C00BEFCB1 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		108155CF17309F4F00BEFCB1 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
 		108155D017309F4F00BEFCB1 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableViewController.h; sourceTree = "<group>"; };
+		10A2B1901730B2540056A99D /* BNSortedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 				107489C6172829910035CA38 /* BNSortableData.h */,
 				107489C51728292E0035CA38 /* Model */,
 				107489C4172829250035CA38 /* Controller */,
+				10A2B1931730B25C0056A99D /* View Controller */,
 				106395DE172750E100037F1D /* Supporting Files */,
 			);
 			path = BNSortedDataController;
@@ -258,6 +263,15 @@
 				108155C417309E0A00BEFCB1 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10A2B1931730B25C0056A99D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */,
+				10A2B1901730B2540056A99D /* BNSortedTableViewController.m */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +405,7 @@
 				106395E3172750E100037F1D /* BNSortedDataController.m in Sources */,
 				10639605172754A200037F1D /* BNSortedTable.m in Sources */,
 				10639609172754BA00037F1D /* BNSortedSection.m in Sources */,
+				10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +416,7 @@
 				106395FA172750E200037F1D /* BNSortedDataControllerTests.m in Sources */,
 				10639606172754A200037F1D /* BNSortedTable.m in Sources */,
 				1063960A172754BA00037F1D /* BNSortedSection.m in Sources */,
+				10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +636,7 @@
 				108155C817309E0A00BEFCB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
