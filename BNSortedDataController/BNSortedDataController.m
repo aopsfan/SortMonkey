@@ -42,35 +42,50 @@
 
 - (BNSortedTable *)sortedTable {
     if (self.shouldReloadSortedTable) {
-        // TODO: make this not suck
-        // TODO: never show nick's dad this code
-        // First, remove all data from the table
-        [_sortedTable removeAllSections];
         
-        // Add everything
+        // Add new objects
+        
         for (id<BNSortableData> object in self.objects) {
-            BOOL shouldContinue = YES;
-            NSComparisonResult sectionIdentifierComparison;
+            BNSortedSection *section = nil;
             id<BNSortableData> identifier = [object valueForKey:self.sortKey];
             
-            for (BNSortedSection *section in [_sortedTable sortedSections]) {
-                sectionIdentifierComparison = [section.identifier compare:identifier];
-                if (sectionIdentifierComparison == NSOrderedSame) { // Add this item to an existing section
-                    [section addObject:object];
-                    shouldContinue = NO;
-                    
-                    break;
+            for (BNSortedSection *tempSection in [_sortedTable sortedSections]) {
+                if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
+                    section = tempSection;
                 }
             }
             
-            if (shouldContinue) {
-                BNSortedSection *section = [[BNSortedSection alloc] init];
+            if (!section) {
+                section = [[BNSortedSection alloc] init];
                 section.identifier = identifier;
-                [section addObject:object];
                 
                 [_sortedTable addSection:section];
             }
+            
+            [section addObject:object];
         }
+        
+        // Delete old objects
+        
+        NSMutableSet *oldSections = [NSMutableSet set];
+        
+        for (BNSortedSection *tempSection in [_sortedTable sortedSections]) {
+            for (id<BNSortableData> object in [tempSection sortedObjects]) {
+                if (![self.objects containsObject:object]) {
+                    [tempSection removeObject:object];
+                }
+            }
+            
+            if ([tempSection sortedObjects].count == 0) {
+                [oldSections addObject:tempSection];
+            }
+        }
+        
+        for (BNSortedSection *oldSection in oldSections) {
+            [_sortedTable removeSection:oldSection];
+        }
+        
+        // Reset the should reload flag
         
         self.shouldReloadSortedTable = NO;
     }

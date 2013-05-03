@@ -28,14 +28,11 @@
     Food *orange = [Food foodWithName:@"Orange" category:@"Fruits"];
     Food *mango = [Food foodWithName:@"Mango" category:@"Fruits"];
     Food *pineapple = [Food foodWithName:@"Pineapple" category:@"Fruits"];
-    
     Food *tomato = [Food foodWithName:@"Tomato" category:@"Vegetables"];
     Food *cucumber = [Food foodWithName:@"Cucumber" category:@"Vegetables"];
     Food *greenBeans = [Food foodWithName:@"Green Beans" category:@"Vegetables"];
-    
     Food *milk = [Food foodWithName:@"Milk" category:@"Dairy"];
     Food *cheese = [Food foodWithName:@"Cheese" category:@"Dairy"];
-    
     Food *pork = [Food foodWithName:@"Pork" category:@"Meats"];
     Food *bacon = [Food foodWithName:@"Bacon" category:@"Meats"];
     Food *burger = [Food foodWithName:@"Burger" category:@"Meats"];

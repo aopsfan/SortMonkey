@@ -68,4 +68,48 @@
     }
 }
 
+- (void)testUpdateContent {
+    NSMutableArray *newSampleFoods = [[Food sampleFoods] mutableCopy];
+    [newSampleFoods removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4, 4)]]; // All veggies and one dairy
+    
+    Food *iceCream = [Food foodWithName:@"Ice Cream" category:@"Dairy"];
+    Food *jollyRanchers = [Food foodWithName:@"Jolly Ranchers" category:@"Candy"];
+    Food *cowTales = [Food foodWithName:@"Cow Tales" category:@"Candy"];
+    
+    [newSampleFoods addObjectsFromArray:@[ iceCream, jollyRanchers, cowTales ]];
+    
+    [self.sortedDataController setObjects:newSampleFoods];
+    
+    STAssertEquals([self.sortedDataController numberOfSections], (NSUInteger)4, @"Controller should have 3 sections");
+    
+    NSArray *namesForSection1 = @[ @"Cow Tales", @"Jolly Ranchers" ];
+    NSArray *namesForSection2 = @[ @"Cheese", @"Ice Cream" ];
+    NSArray *namesForSection3 = @[ @"Apple", @"Mango", @"Orange", @"Pineapple" ];
+    NSArray *namesForSection4 = @[ @"Bacon", @"Burger", @"Pork", @"Steak" ];
+    
+    for (NSUInteger index = 0; index < [self.sortedDataController numberOfRowsInSection:0]; index++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        Food *food = (Food *)[self.sortedDataController objectAtIndexPath:indexPath];
+        STAssertTrue([namesForSection1 containsObject:food.name], [NSString stringWithFormat:@"Object at index path %@ should be %@, is %@", indexPath, namesForSection1[index], food.name]);
+    }
+    
+    for (NSUInteger index = 0; index < [self.sortedDataController numberOfRowsInSection:1]; index++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+        Food *food = (Food *)[self.sortedDataController objectAtIndexPath:indexPath];
+        STAssertTrue([namesForSection2 containsObject:food.name], [NSString stringWithFormat:@"Object at index path %@ should be %@, is %@", indexPath, namesForSection2[index], food.name]);
+    }
+    
+    for (NSUInteger index = 0; index < [self.sortedDataController numberOfRowsInSection:2]; index++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:2];
+        Food *food = (Food *)[self.sortedDataController objectAtIndexPath:indexPath];
+        STAssertTrue([namesForSection3 containsObject:food.name], [NSString stringWithFormat:@"Object at index path %@ should be %@, is %@", indexPath, namesForSection3[index], food.name]);
+    }
+    
+    for (NSUInteger index = 0; index < [self.sortedDataController numberOfRowsInSection:3]; index++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:3];
+        Food *food = (Food *)[self.sortedDataController objectAtIndexPath:indexPath];
+        STAssertTrue([namesForSection4 containsObject:food.name], [NSString stringWithFormat:@"Object at index path %@ should be %@, is %@", indexPath, namesForSection4[index], food.name]);
+    }
+}
+
 @end
