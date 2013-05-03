@@ -17,6 +17,7 @@
 - (void)removeAllSections;
 
 // Getting data
+- (NSArray *)allSections;
 - (NSArray *)sortedSections;
 - (BNSortedSection *)sortedSectionAtIndex:(NSUInteger)index;
 - (NSUInteger)numberOfSections;

@@ -49,6 +49,10 @@
 
 #pragma mark Getting data
 
+- (NSArray *)allObjects {
+    return self.objects;
+}
+
 - (NSArray *)sortedObjects {
     if (self.shouldRefreshSortedObjects) {
         self.sortedObjects = [self.objects sortedArrayUsingSelector:@selector(compare:)];

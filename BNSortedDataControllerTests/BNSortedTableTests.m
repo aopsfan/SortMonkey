@@ -52,6 +52,22 @@
     STAssertEquals([self.sortedTable numberOfSections], (NSUInteger)0, @"Table should have 0 sections");
 }
 
+- (void)testAllSections {
+    for (BNSortedSection *section in [self sampleSections]) {
+        [self.sortedTable addSection:section];
+    }
+    
+    BOOL sectionIsDairy, sectionIsFruits, sectionIsMeats;
+    
+    for (BNSortedSection *section in [self.sortedTable allSections]) {
+        sectionIsDairy = [(NSString *)section.identifier isEqualToString:@"Dairy"];
+        sectionIsFruits = [(NSString *)section.identifier isEqualToString:@"Fruits"];
+        sectionIsMeats = [(NSString *)section.identifier isEqualToString:@"Meats"];
+        
+        STAssertTrue(sectionIsDairy || sectionIsFruits || sectionIsMeats, @"Table should contain all the right sections");
+    }
+}
+
 - (void)testSortedSections {
     for (BNSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];

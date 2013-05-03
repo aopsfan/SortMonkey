@@ -18,6 +18,7 @@
 - (void)setAllObjects:(NSArray *)objects;
 
 // Getting data
+- (NSArray *)allObjects;
 - (NSArray *)sortedObjects;
 - (id<BNSortableData>)sortedObjectAtIndex:(NSUInteger)index;
 - (NSUInteger)numberOfObjects;

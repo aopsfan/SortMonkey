@@ -44,6 +44,10 @@
 
 #pragma mark Getting data
 
+- (NSArray *)allSections {
+    return self.sections;
+}
+
 - (NSArray *)sortedSections {
     if (self.shouldRefreshSortedSections) {
         _sortedSections = [self.sections sortedArrayUsingSelector:@selector(compare:)];

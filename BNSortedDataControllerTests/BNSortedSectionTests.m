@@ -42,6 +42,13 @@
     STAssertEquals([self.sortedSection numberOfObjects], (NSUInteger)3, @"Section should have 3 objects");
 }
 
+- (void)testAllObjects {
+    [self.sortedSection setAllObjects:[self sectionMembers]];
+    
+    NSSet *correctObjects = [NSSet setWithObjects:@"123", @"Apple", @"Banana", @"Orange", @"Pineapple", nil];
+    STAssertTrue([[NSSet setWithArray:self.sortedSection.allObjects] isEqualToSet:correctObjects], @"allObjects should equal correctObjects");
+}
+
 - (void)testSortedObjects {
     [self.sortedSection setAllObjects:[self sectionMembers]];
     

@@ -49,7 +49,7 @@
             BNSortedSection *section = nil;
             id<BNSortableData> identifier = [object valueForKey:self.sortKey];
             
-            for (BNSortedSection *tempSection in [_sortedTable sortedSections]) {
+            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
                 if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
                     section = tempSection;
                 }
@@ -69,14 +69,14 @@
         
         NSMutableSet *oldSections = [NSMutableSet set];
         
-        for (BNSortedSection *tempSection in [_sortedTable sortedSections]) {
-            for (id<BNSortableData> object in [tempSection sortedObjects]) {
+        for (BNSortedSection *tempSection in [_sortedTable allSections]) {
+            for (id<BNSortableData> object in [tempSection allObjects]) {
                 if (![self.objects containsObject:object]) {
                     [tempSection removeObject:object];
                 }
             }
             
-            if ([tempSection sortedObjects].count == 0) {
+            if ([tempSection allObjects].count == 0) {
                 [oldSections addObject:tempSection];
             }
         }
