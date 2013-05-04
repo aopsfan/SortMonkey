@@ -24,6 +24,8 @@
 }
 
 - (void)setUp {
+    [super setUp];
+    
     _sortedTable = [[BNSortedTable alloc] init];
 }
 

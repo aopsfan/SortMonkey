@@ -15,6 +15,8 @@
 }
 
 - (void)setUp {
+    [super setUp];
+    
     _sortedSection = [[BNSortedSection alloc] init];
 }
 

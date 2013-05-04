@@ -12,6 +12,8 @@
 @implementation BNSortedDataControllerTests
 
 - (void)setUp {
+    [super setUp];
+    
     _sortedDataController = [[BNSortedDataController alloc] init];
     [self.sortedDataController setObjects:[Food sampleFoods]];
     self.sortedDataController.sortKey = @"category";

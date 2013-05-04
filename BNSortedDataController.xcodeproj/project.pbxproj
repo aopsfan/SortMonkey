@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1025CF5E1734A2F500A3129D /* BNArrayComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1025CF5D1734A2F500A3129D /* BNArrayComparisonTests.m */; };
 		106395DC172750E100037F1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395DB172750E100037F1D /* Foundation.framework */; };
 		106395E1172750E100037F1D /* BNSortedDataController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106395E0172750E100037F1D /* BNSortedDataController.h */; };
 		106395E3172750E100037F1D /* BNSortedDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106395E2172750E100037F1D /* BNSortedDataController.m */; };
@@ -38,6 +39,9 @@
 		10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19817314AE30056A99D /* BNSortedTableTests.m */; };
 		10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */; };
 		10A2B19D17315F110056A99D /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
+		10B72A42173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
+		10B72A43173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
+		10B72A44173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1025CF5C1734A2F500A3129D /* BNArrayComparisonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNArrayComparisonTests.h; sourceTree = "<group>"; };
+		1025CF5D1734A2F500A3129D /* BNArrayComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNArrayComparisonTests.m; sourceTree = "<group>"; };
 		106395D8172750E100037F1D /* libBNSortedDataController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBNSortedDataController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		106395DB172750E100037F1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		106395DF172750E100037F1D /* BNSortedDataController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BNSortedDataController-Prefix.pch"; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 		10A2B19817314AE30056A99D /* BNSortedTableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableTests.m; sourceTree = "<group>"; };
 		10A2B19A17314AEF0056A99D /* BNSortedSectionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedSectionTests.h; sourceTree = "<group>"; };
 		10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedSectionTests.m; sourceTree = "<group>"; };
+		10B72A40173492090010F0BB /* BNArrayComparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNArrayComparison.h; sourceTree = "<group>"; };
+		10B72A41173492090010F0BB /* BNArrayComparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNArrayComparison.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +244,8 @@
 				10639604172754A200037F1D /* BNSortedTable.m */,
 				10639607172754BA00037F1D /* BNSortedSection.h */,
 				10639608172754BA00037F1D /* BNSortedSection.m */,
+				10B72A40173492090010F0BB /* BNArrayComparison.h */,
+				10B72A41173492090010F0BB /* BNArrayComparison.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,6 +294,8 @@
 				10A2B19817314AE30056A99D /* BNSortedTableTests.m */,
 				10A2B19A17314AEF0056A99D /* BNSortedSectionTests.h */,
 				10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */,
+				1025CF5C1734A2F500A3129D /* BNArrayComparisonTests.h */,
+				1025CF5D1734A2F500A3129D /* BNArrayComparisonTests.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -436,6 +448,7 @@
 				10639605172754A200037F1D /* BNSortedTable.m in Sources */,
 				10639609172754BA00037F1D /* BNSortedSection.m in Sources */,
 				10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */,
+				10B72A42173492090010F0BB /* BNArrayComparison.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +463,8 @@
 				10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */,
 				10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */,
 				10A2B19D17315F110056A99D /* Food.m in Sources */,
+				10B72A43173492090010F0BB /* BNArrayComparison.m in Sources */,
+				1025CF5E1734A2F500A3129D /* BNArrayComparisonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +476,7 @@
 				108155BF17309E0A00BEFCB1 /* AppDelegate.m in Sources */,
 				108155CB17309E3700BEFCB1 /* FoodsViewController.m in Sources */,
 				108155CE17309F2C00BEFCB1 /* Food.m in Sources */,
+				10B72A44173492090010F0BB /* BNArrayComparison.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

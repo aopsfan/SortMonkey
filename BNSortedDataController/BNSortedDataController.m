@@ -9,10 +9,13 @@
 #import "BNSortedDataController.h"
 #import "BNSortedTable.h"
 #import "BNSortedSection.h"
+#import "BNArrayComparison.h"
 
 @interface BNSortedDataController ()
 @property (strong, nonatomic)BNSortedTable *sortedTable;
-@property BOOL shouldReloadSortedTable;
+@property (strong, nonatomic)BNArrayComparison *arrayComparison;
+@property BOOL shouldUpdateTable;
+@property BOOL shouldDumpTableData;
 @end
 
 @implementation BNSortedDataController
@@ -22,6 +25,7 @@
     self = [super init];
     if (self) {
         _sortedTable = [[BNSortedTable alloc] init];
+        _arrayComparison = [BNArrayComparison arrayComparisonWithOldArray:@[] updatedArray:@[]];
     }
     return self;
 }
@@ -29,23 +33,28 @@
 #pragma mark Setting data
 
 - (void)setObjects:(NSArray *)objects {
+    [self.arrayComparison addArrayComparison:[BNArrayComparison arrayComparisonWithOldArray:_objects updatedArray:objects]];
     _objects = objects;
-    self.shouldReloadSortedTable = YES;
+    self.shouldUpdateTable = YES;
 }
 
 - (void)setSortKey:(NSString *)sortKey {
     _sortKey = sortKey;
-    self.shouldReloadSortedTable = YES;
+    self.shouldUpdateTable = YES;
+    
+    if (self.sortedTable.numberOfSections > 0) {
+        self.shouldDumpTableData = YES;
+    }
 }
 
 #pragma mark Getting data
 
 - (BNSortedTable *)sortedTable {
-    if (self.shouldReloadSortedTable) {
+    if (self.shouldUpdateTable) {
         
         // Add new objects
         
-        for (id<BNSortableData> object in self.objects) {
+        for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
             BNSortedSection *section = nil;
             id<BNSortableData> identifier = [object valueForKey:self.sortKey];
             
@@ -67,27 +76,27 @@
         
         // Delete old objects
         
-        NSMutableSet *oldSections = [NSMutableSet set];
-        
-        for (BNSortedSection *tempSection in [_sortedTable allSections]) {
-            for (id<BNSortableData> object in [tempSection allObjects]) {
-                if (![self.objects containsObject:object]) {
-                    [tempSection removeObject:object];
+        for (id<BNSortableData> deletedObject in self.arrayComparison.deletedObjects) {
+            BNSortedSection *section = nil;
+            id<BNSortableData> identifier = [deletedObject valueForKey:self.sortKey];
+            
+            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
+                if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
+                    section = tempSection;
                 }
             }
             
-            if ([tempSection allObjects].count == 0) {
-                [oldSections addObject:tempSection];
+            [section removeObject:deletedObject];
+            
+            if ([section numberOfObjects] == 0) {
+                [_sortedTable removeSection:section];
             }
         }
         
-        for (BNSortedSection *oldSection in oldSections) {
-            [_sortedTable removeSection:oldSection];
-        }
+        // Reset the should reload flags
         
-        // Reset the should reload flag
-        
-        self.shouldReloadSortedTable = NO;
+        self.shouldUpdateTable = NO;
+        self.shouldDumpTableData = NO;
     }
     
     return _sortedTable;
