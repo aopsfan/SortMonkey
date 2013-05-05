@@ -9,13 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "BNSortableData.h"
 
-@class BNSortedDataController;
+@class BNSortedDataController, BNTableViewUpdates;
 @protocol BNSortedDataControllerDelegate <NSObject>
 @optional
 
-- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller
-                      addedIndexPaths:(NSArray *)addedIndexPaths
-                    deletedIndexPaths:(NSArray *)deletedIndexPaths;
+- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller committedUpdates:(BNTableViewUpdates *)tableViewUpdates;
 
 @end
 
@@ -34,6 +32,7 @@
 - (id<BNSortableData>)objectAtIndexPath:(NSIndexPath *)indexPath;
 
 // Other
+- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier;
 - (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object;
 - (void)reload;
 

@@ -10,6 +10,7 @@
 #import "BNSortedTable.h"
 #import "BNSortedSection.h"
 #import "BNArrayComparison.h"
+#import "BNTableViewUpdates.h"
 
 @interface BNSortedDataController ()
 @property (strong, nonatomic)BNSortedTable *sortedTable;
@@ -17,8 +18,8 @@
 @property BOOL shouldUpdateTable;
 @property BOOL shouldDumpTableData;
 
-- (NSArray *)addedIndexPaths;
-- (NSArray *)deletedIndexPaths;
+- (NSMutableArray *)addedIndexPaths;
+- (NSMutableArray *)deletedIndexPaths;
 
 @end
 
@@ -36,7 +37,7 @@
 
 #pragma mark Private
 
-- (NSArray *)addedIndexPaths {
+- (NSMutableArray *)addedIndexPaths {
     NSMutableArray *addedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.addedObjects.count];
     
     for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
@@ -46,7 +47,7 @@
     return addedIndexPaths;
 }
 
-- (NSArray *)deletedIndexPaths {
+- (NSMutableArray *)deletedIndexPaths {
     NSMutableArray *deletedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.deletedObjects.count];
     
     for (id<BNSortableData> object in self.arrayComparison.deletedObjects) {
@@ -116,6 +117,18 @@
 
 #pragma mark Other
 
+- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier {
+    NSUInteger section = NSNotFound;
+    
+    for (BNSortedSection *sortedSection in _sortedTable.sortedSections) {
+        if (sortedSection.identifier == identifier) {
+            section = [_sortedTable.sortedSections indexOfObject:sortedSection];
+        }
+    }
+    
+    return section;
+}
+
 - (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object {
     NSIndexPath *indexPath = nil;
     
@@ -133,9 +146,30 @@
 
 - (void)reload {
     if (self.shouldUpdateTable) {
-        // Track deleted index paths now, since they won't be gone yet
+        BNTableViewUpdates *tableViewUpdates = [[BNTableViewUpdates alloc] init];
         
-        NSArray *deletedIndexPaths = [self deletedIndexPaths];
+        // Delete old objects
+        
+        for (id<BNSortableData> deletedObject in self.arrayComparison.deletedObjects) {
+            [tableViewUpdates.deletedRowIndexPaths addObject:[self indexPathForObject:deletedObject]];
+            
+            BNSortedSection *section = nil;
+            id<BNSortableData> identifier = [deletedObject valueForKey:self.sortKey];
+            
+            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
+                if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
+                    section = tempSection;
+                }
+            }
+            
+            [section removeObject:deletedObject];
+            
+            if ([section numberOfObjects] == 0) {
+                [tableViewUpdates.deletedSectionIndexSets addObject:[NSIndexSet indexSetWithIndex:[_sortedTable.sortedSections indexOfObject:section]]];
+                
+                [_sortedTable removeSection:section];
+            }
+        }
         
         // Add new objects
         
@@ -154,33 +188,14 @@
                 section.identifier = identifier;
                 
                 [_sortedTable addSection:section];
+                
+                [tableViewUpdates.addedSectionIndexSets addObject:[NSIndexSet indexSetWithIndex:[_sortedTable.sortedSections indexOfObject:section]]];
             }
             
             [section addObject:object];
+            
+            [tableViewUpdates.addedRowIndexPaths addObject:[self indexPathForObject:object]];
         }
-        
-        // Delete old objects
-        
-        for (id<BNSortableData> deletedObject in self.arrayComparison.deletedObjects) {
-            BNSortedSection *section = nil;
-            id<BNSortableData> identifier = [deletedObject valueForKey:self.sortKey];
-            
-            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
-                if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
-                    section = tempSection;
-                }
-            }
-            
-            [section removeObject:deletedObject];
-            
-            if ([section numberOfObjects] == 0) {
-                [_sortedTable removeSection:section];
-            }
-        }
-        
-        // Track added index paths now
-        
-        NSArray *addedIndexPaths = [self addedIndexPaths];
         
         // Reset flags and array comparison
         
@@ -191,7 +206,7 @@
         
         // Notify delegate
         
-        [self.delegate sortedDataControllerDidReload:self addedIndexPaths:addedIndexPaths deletedIndexPaths:deletedIndexPaths];
+        [self.delegate sortedDataControllerDidReload:self committedUpdates:tableViewUpdates];
     }
 }
 

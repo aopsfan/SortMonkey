@@ -7,6 +7,7 @@
 //
 
 #import "BNSortedTableViewController.h"
+#import "BNTableViewUpdates.h"
 
 @implementation BNSortedTableViewController
 
@@ -61,13 +62,18 @@
 
 #pragma mark - Sorted data controller delegate
 
-- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller
-                      addedIndexPaths:(NSArray *)addedIndexPaths
-                    deletedIndexPaths:(NSArray *)deletedIndexPaths {
+- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller committedUpdates:(BNTableViewUpdates *)tableViewUpdates {
     [self.tableView beginUpdates];
     
-    [self.tableView insertRowsAtIndexPaths:addedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteRowsAtIndexPaths:tableViewUpdates.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    for (NSIndexSet *indexSet in tableViewUpdates.deletedSectionIndexSets) {
+        [self.tableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    for (NSIndexSet *indexSet in tableViewUpdates.addedSectionIndexSets) {
+        [self.tableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    [self.tableView insertRowsAtIndexPaths:tableViewUpdates.addedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
     [self.tableView endUpdates];
 }
