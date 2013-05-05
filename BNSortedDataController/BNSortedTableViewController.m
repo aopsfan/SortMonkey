@@ -15,6 +15,7 @@
     self = [super initWithStyle:style];
     if (self) {
         _sortedDataController = [[BNSortedDataController alloc] init];
+        self.sortedDataController.delegate = self;
     }
     return self;
 }
@@ -24,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _sortedDataController = [[BNSortedDataController alloc] init];
+        self.sortedDataController.delegate = self;
     }
     return self;
 }
@@ -48,6 +50,26 @@
     }
     
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.sortedDataController removeObjectAtIndexPath:indexPath];
+        [self.sortedDataController reload];
+    }
+}
+
+#pragma mark - Sorted data controller delegate
+
+- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller
+                      addedIndexPaths:(NSArray *)addedIndexPaths
+                    deletedIndexPaths:(NSArray *)deletedIndexPaths {
+    [self.tableView beginUpdates];
+    
+    [self.tableView insertRowsAtIndexPaths:addedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self.tableView endUpdates];
 }
 
 @end

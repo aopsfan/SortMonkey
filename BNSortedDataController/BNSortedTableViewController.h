@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BNSortedDataController.h"
 
-@interface BNSortedTableViewController : UITableViewController
+@interface BNSortedTableViewController : UITableViewController <BNSortedDataControllerDelegate>
 @property (strong, nonatomic, readonly)BNSortedDataController *sortedDataController;
 @end
