@@ -7,6 +7,7 @@
 //
 
 #import "BNSortedDataControllerTests.h"
+#import "BNSortedSection.h"
 #import "Food.h"
 
 @implementation BNSortedDataControllerTests
@@ -67,6 +68,29 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:3];
         Food *food = (Food *)[self.sortedDataController objectAtIndexPath:indexPath];
         STAssertTrue([namesForSection4 containsObject:food.name], [NSString stringWithFormat:@"Object at index path %@ should be %@, is %@", indexPath, namesForSection4[index], food.name]);
+    }
+}
+
+- (void)testSectionForIdentifier {
+    [self.sortedDataController commitUpdates];
+    
+    NSUInteger sectionForDairyIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Dairy"];
+    NSUInteger sectionForFruitsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Fruits"];
+    NSUInteger sectionForMeatsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Meats"];
+    NSUInteger sectionForVeggiesIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Vegetables"];
+    
+    STAssertEquals(sectionForDairyIdentifier, (NSUInteger)0, @"Dairy section should be at index 0");
+    STAssertEquals(sectionForFruitsIdentifier, (NSUInteger)1, @"Fruits section should be at index 1");
+    STAssertEquals(sectionForMeatsIdentifier, (NSUInteger)2, @"Meats section should be at index 2");
+    STAssertEquals(sectionForVeggiesIdentifier, (NSUInteger)3, @"Veggies section should be at index 3");
+}
+
+- (void)testIndexOfObject {
+    [self.sortedDataController commitUpdates];
+    
+    for (Food *food in self.sortedDataController.objects) {
+        Food *testFood = [self.sortedDataController objectAtIndexPath:[self.sortedDataController indexPathForObject:food]];
+        STAssertEquals(food, testFood, [NSString stringWithFormat:@"Food (%@) should equal food (%@)", testFood.name, food.name]);
     }
 }
 
