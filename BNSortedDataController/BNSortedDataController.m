@@ -75,7 +75,7 @@
 }
 
 - (BNSortedTable *)sortedTable {
-    [self reload];
+    [self commitUpdates];
     
     return _sortedTable;
 }
@@ -144,7 +144,7 @@
     return indexPath;
 }
 
-- (void)reload {
+- (void)commitUpdates {
     if (self.shouldUpdateTable) {
         BNTableViewUpdates *tableViewUpdates = [[BNTableViewUpdates alloc] init];
         
@@ -206,7 +206,7 @@
         
         // Notify delegate
         
-        [self.delegate sortedDataControllerDidReload:self committedUpdates:tableViewUpdates];
+        [self.delegate sortedDataController:self didCommitUpdates:tableViewUpdates];
     }
 }
 

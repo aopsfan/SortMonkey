@@ -13,7 +13,7 @@
 @protocol BNSortedDataControllerDelegate <NSObject>
 @optional
 
-- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller committedUpdates:(BNTableViewUpdates *)tableViewUpdates;
+- (void)sortedDataController:(BNSortedDataController *)controller didCommitUpdates:(BNTableViewUpdates *)tableViewUpdates;
 
 @end
 
@@ -34,6 +34,6 @@
 // Other
 - (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier;
 - (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object;
-- (void)reload;
+- (void)commitUpdates;
 
 @end

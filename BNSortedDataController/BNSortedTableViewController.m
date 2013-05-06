@@ -56,13 +56,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.sortedDataController removeObjectAtIndexPath:indexPath];
-        [self.sortedDataController reload];
+        [self.sortedDataController commitUpdates];
     }
 }
 
 #pragma mark - Sorted data controller delegate
 
-- (void)sortedDataControllerDidReload:(BNSortedDataController *)controller committedUpdates:(BNTableViewUpdates *)tableViewUpdates {
+- (void)sortedDataController:(BNSortedDataController *)controller didCommitUpdates:(BNTableViewUpdates *)tableViewUpdates {
     [self.tableView beginUpdates];
     
     [self.tableView deleteRowsAtIndexPaths:tableViewUpdates.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
