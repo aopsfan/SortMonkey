@@ -21,6 +21,9 @@
 - (NSMutableArray *)addedIndexPaths;
 - (NSMutableArray *)deletedIndexPaths;
 
+- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier commitUpdates:(BOOL)commitUpdates;
+- (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object commitUpdates:(BOOL)commitUpdates;
+
 @end
 
 @implementation BNSortedDataController
@@ -41,7 +44,7 @@
     NSMutableArray *addedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.addedObjects.count];
     
     for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
-        [addedIndexPaths addObject:[self indexPathForObject:object]];
+        [addedIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
     }
     
     return addedIndexPaths;
@@ -51,10 +54,38 @@
     NSMutableArray *deletedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.deletedObjects.count];
     
     for (id<BNSortableData> object in self.arrayComparison.deletedObjects) {
-        [deletedIndexPaths addObject:[self indexPathForObject:object]];
+        [deletedIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
     }
     
     return deletedIndexPaths;
+}
+
+- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier commitUpdates:(BOOL)commitUpdates {
+    BNSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
+    NSUInteger section = NSNotFound;
+    
+    for (BNSortedSection *sortedSection in sortedTable.sortedSections) {
+        if (sortedSection.identifier == identifier) {
+            section = [sortedTable.sortedSections indexOfObject:sortedSection];
+        }
+    }
+    
+    return section;
+}
+
+- (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object commitUpdates:(BOOL)commitUpdates {
+    BNSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
+    NSIndexPath *indexPath = nil;
+    
+    for (BNSortedSection *sortedSection in sortedTable.sortedSections) {
+        if ([sortedSection.allObjects containsObject:object]) {
+            NSUInteger row = [sortedSection.sortedObjects indexOfObject:object];
+            NSUInteger section = [sortedTable.sortedSections indexOfObject:sortedSection];
+            indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        }
+    }
+    
+    return indexPath;
 }
 
 #pragma mark Setters/getters
@@ -118,30 +149,11 @@
 #pragma mark Other
 
 - (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier {
-    NSUInteger section = NSNotFound;
-    
-    for (BNSortedSection *sortedSection in _sortedTable.sortedSections) {
-        if (sortedSection.identifier == identifier) {
-            section = [_sortedTable.sortedSections indexOfObject:sortedSection];
-        }
-    }
-    
-    return section;
+    return [self sectionForIdentifier:identifier commitUpdates:YES];
 }
 
 - (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object {
-    NSIndexPath *indexPath = nil;
-    
-    for (BNSortedSection *sortedSection in _sortedTable.sortedSections) {
-        if ([sortedSection.allObjects containsObject:object]) {
-            NSUInteger row = [sortedSection.sortedObjects indexOfObject:object];
-            NSUInteger section = [_sortedTable.sortedSections indexOfObject:sortedSection];
-            indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-        }
-    }
-    
-    
-    return indexPath;
+    return [self indexPathForObject:object commitUpdates:YES];
 }
 
 - (void)commitUpdates {
@@ -151,7 +163,7 @@
         // Delete old objects
         
         for (id<BNSortableData> deletedObject in self.arrayComparison.deletedObjects) {
-            [tableViewUpdates.deletedRowIndexPaths addObject:[self indexPathForObject:deletedObject]];
+            [tableViewUpdates.deletedRowIndexPaths addObject:[self indexPathForObject:deletedObject commitUpdates:NO]];
             
             BNSortedSection *section = nil;
             id<BNSortableData> identifier = [deletedObject valueForKey:self.sortKey];
@@ -194,7 +206,7 @@
             
             [section addObject:object];
             
-            [tableViewUpdates.addedRowIndexPaths addObject:[self indexPathForObject:object]];
+            [tableViewUpdates.addedRowIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
         }
         
         // Reset flags and array comparison

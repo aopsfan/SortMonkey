@@ -72,8 +72,6 @@
 }
 
 - (void)testSectionForIdentifier {
-    [self.sortedDataController commitUpdates];
-    
     NSUInteger sectionForDairyIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Dairy"];
     NSUInteger sectionForFruitsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Fruits"];
     NSUInteger sectionForMeatsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Meats"];
@@ -86,8 +84,6 @@
 }
 
 - (void)testIndexOfObject {
-    [self.sortedDataController commitUpdates];
-    
     for (Food *food in self.sortedDataController.objects) {
         Food *testFood = [self.sortedDataController objectAtIndexPath:[self.sortedDataController indexPathForObject:food]];
         STAssertEquals(food, testFood, [NSString stringWithFormat:@"Food (%@) should equal food (%@)", testFood.name, food.name]);
