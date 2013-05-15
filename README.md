@@ -8,7 +8,7 @@ BNSortedDataController is centered on practically organizing and displaying cont
 Installation
 ============
 
-Follow Apple's [Using Static Libraries in iOS][http://developer.apple.com/library/ios/#technotes/iOSStaticLibraries/Articles/configuration.html%23/apple_ref/doc/uid/TP40012554-CH3-SW2] guide on how to import BNSortedDataController into your project.
+Follow Apple's [Using Static Libraries in iOS](http://developer.apple.com/library/ios/#technotes/iOSStaticLibraries/Articles/configuration.html%23/apple_ref/doc/uid/TP40012554-CH3-SW2) guide on how to import BNSortedDataController into your project.
 
 Demo
 ====
