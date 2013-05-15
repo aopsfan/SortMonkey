@@ -12,6 +12,8 @@
 #import "BNArrayComparison.h"
 #import "BNTableViewUpdates.h"
 
+NSString *BNNotSortableDataException = @"BNNotSortableDataException";
+
 @interface BNSortedDataController ()
 @property (strong, nonatomic)BNSortedTable *sortedTable;
 @property (strong, nonatomic)BNArrayComparison *arrayComparison;
@@ -186,8 +188,18 @@
         // Add new objects
         
         for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
+            if (![object conformsToProtocol:@protocol(BNSortableData)]) {
+                NSException *exception = [NSException exceptionWithName:BNNotSortableDataException reason:[NSString stringWithFormat:@"Object %@ does not conform to BNSortableData protocol", object] userInfo:nil];
+                [exception raise];
+            }
+            
             BNSortedSection *section = nil;
             id<BNSortableData> identifier = [object valueForKey:self.sortKey];
+            
+            if (![identifier respondsToSelector:@selector(compare:)]) {
+                NSException *exception = [NSException exceptionWithName:BNNotSortableDataException reason:[NSString stringWithFormat:@"Section identifier %@ does not respond to -compare:", identifier] userInfo:nil];
+                [exception raise];
+            }
             
             for (BNSortedSection *tempSection in [_sortedTable allSections]) {
                 if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
