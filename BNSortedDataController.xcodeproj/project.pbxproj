@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1025CF5E1734A2F500A3129D /* BNArrayComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1025CF5D1734A2F500A3129D /* BNArrayComparisonTests.m */; };
+		103C444F174325F10018F290 /* BNTableViewUpdates.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10D90385173716AE0037CA8F /* BNTableViewUpdates.h */; };
+		103C4450174325F80018F290 /* BNSortedTableViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */; };
 		106395DC172750E100037F1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395DB172750E100037F1D /* Foundation.framework */; };
 		106395E1172750E100037F1D /* BNSortedDataController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106395E0172750E100037F1D /* BNSortedDataController.h */; };
 		106395E3172750E100037F1D /* BNSortedDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106395E2172750E100037F1D /* BNSortedDataController.m */; };
@@ -22,40 +24,20 @@
 		10639609172754BA00037F1D /* BNSortedSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 10639608172754BA00037F1D /* BNSortedSection.m */; };
 		1063960A172754BA00037F1D /* BNSortedSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 10639608172754BA00037F1D /* BNSortedSection.m */; };
 		108155AA1730952F00BEFCB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108155A91730952F00BEFCB1 /* UIKit.framework */; };
-		108155B017309E0A00BEFCB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108155A91730952F00BEFCB1 /* UIKit.framework */; };
-		108155B117309E0A00BEFCB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395DB172750E100037F1D /* Foundation.framework */; };
-		108155B317309E0A00BEFCB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108155B217309E0A00BEFCB1 /* CoreGraphics.framework */; };
-		108155B917309E0A00BEFCB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108155B717309E0A00BEFCB1 /* InfoPlist.strings */; };
-		108155BB17309E0A00BEFCB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155BA17309E0A00BEFCB1 /* main.m */; };
-		108155BF17309E0A00BEFCB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155BE17309E0A00BEFCB1 /* AppDelegate.m */; };
-		108155C117309E0A00BEFCB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 108155C017309E0A00BEFCB1 /* Default.png */; };
-		108155C317309E0A00BEFCB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 108155C217309E0A00BEFCB1 /* Default@2x.png */; };
-		108155C517309E0A00BEFCB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 108155C417309E0A00BEFCB1 /* Default-568h@2x.png */; };
-		108155CB17309E3700BEFCB1 /* FoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CA17309E3700BEFCB1 /* FoodsViewController.m */; };
-		108155CE17309F2C00BEFCB1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
-		108155D41730A0AA00BEFCB1 /* libBNSortedDataController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 106395D8172750E100037F1D /* libBNSortedDataController.a */; };
+		109F7B0C1743291D00B96879 /* BNSortableData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 107489C6172829910035CA38 /* BNSortableData.h */; };
+		109F7B1217432A9400B96879 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 109F7B1117432A9400B96879 /* Food.m */; };
 		10A2B1911730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 		10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B1901730B2540056A99D /* BNSortedTableViewController.m */; };
 		10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19817314AE30056A99D /* BNSortedTableTests.m */; };
 		10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A2B19B17314AEF0056A99D /* BNSortedSectionTests.m */; };
-		10A2B19D17315F110056A99D /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 108155CD17309F2C00BEFCB1 /* Food.m */; };
 		10B72A42173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
 		10B72A43173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
-		10B72A44173492090010F0BB /* BNArrayComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B72A41173492090010F0BB /* BNArrayComparison.m */; };
 		10D90387173716AF0037CA8F /* BNTableViewUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D90386173716AF0037CA8F /* BNTableViewUpdates.m */; };
 		10D90388173716AF0037CA8F /* BNTableViewUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D90386173716AF0037CA8F /* BNTableViewUpdates.m */; };
-		10D90389173716AF0037CA8F /* BNTableViewUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D90386173716AF0037CA8F /* BNTableViewUpdates.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		106395EF172750E200037F1D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 106395D0172750E100037F1D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 106395D7172750E100037F1D;
-			remoteInfo = BNSortedDataController;
-		};
-		108155D21730A08700BEFCB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 106395D0172750E100037F1D /* Project object */;
 			proxyType = 1;
@@ -71,6 +53,9 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				109F7B0C1743291D00B96879 /* BNSortableData.h in CopyFiles */,
+				103C4450174325F80018F290 /* BNSortedTableViewController.h in CopyFiles */,
+				103C444F174325F10018F290 /* BNTableViewUpdates.h in CopyFiles */,
 				106395E1172750E100037F1D /* BNSortedDataController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,21 +83,9 @@
 		10639608172754BA00037F1D /* BNSortedSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedSection.m; sourceTree = "<group>"; };
 		107489C6172829910035CA38 /* BNSortableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortableData.h; sourceTree = "<group>"; };
 		108155A91730952F00BEFCB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		108155AF17309E0A00BEFCB1 /* FoodDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108155B217309E0A00BEFCB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		108155B617309E0A00BEFCB1 /* FoodDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodDemo-Info.plist"; sourceTree = "<group>"; };
-		108155B817309E0A00BEFCB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		108155BA17309E0A00BEFCB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		108155BC17309E0A00BEFCB1 /* FoodDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDemo-Prefix.pch"; sourceTree = "<group>"; };
-		108155BD17309E0A00BEFCB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		108155BE17309E0A00BEFCB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		108155C017309E0A00BEFCB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		108155C217309E0A00BEFCB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		108155C417309E0A00BEFCB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		108155C917309E3700BEFCB1 /* FoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodsViewController.h; sourceTree = "<group>"; };
-		108155CA17309E3700BEFCB1 /* FoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodsViewController.m; sourceTree = "<group>"; };
-		108155CC17309F2C00BEFCB1 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
-		108155CD17309F2C00BEFCB1 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		109F7B1017432A9400B96879 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		109F7B1117432A9400B96879 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		10A2B18F1730B2540056A99D /* BNSortedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableViewController.h; sourceTree = "<group>"; };
 		10A2B1901730B2540056A99D /* BNSortedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNSortedTableViewController.m; sourceTree = "<group>"; };
 		10A2B19717314AE30056A99D /* BNSortedTableTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSortedTableTests.h; sourceTree = "<group>"; };
@@ -146,17 +119,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		108155AC17309E0A00BEFCB1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				108155D41730A0AA00BEFCB1 /* libBNSortedDataController.a in Frameworks */,
-				108155B017309E0A00BEFCB1 /* UIKit.framework in Frameworks */,
-				108155B117309E0A00BEFCB1 /* Foundation.framework in Frameworks */,
-				108155B317309E0A00BEFCB1 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -165,7 +127,6 @@
 			children = (
 				106395DD172750E100037F1D /* BNSortedDataController */,
 				106395F2172750E200037F1D /* BNSortedDataControllerTests */,
-				108155B417309E0A00BEFCB1 /* FoodDemo */,
 				106395DA172750E100037F1D /* Frameworks */,
 				106395D9172750E100037F1D /* Products */,
 			);
@@ -176,7 +137,6 @@
 			children = (
 				106395D8172750E100037F1D /* libBNSortedDataController.a */,
 				106395E9172750E200037F1D /* BNSortedDataControllerTests.octest */,
-				108155AF17309E0A00BEFCB1 /* FoodDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +176,8 @@
 		106395F2172750E200037F1D /* BNSortedDataControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				109F7B1017432A9400B96879 /* Food.h */,
+				109F7B1117432A9400B96879 /* Food.m */,
 				10A2B19417314AAA0056A99D /* Model */,
 				10A2B19517314AAF0056A99D /* Controller */,
 				10A2B19617314AC10056A99D /* View Controller */,
@@ -255,34 +217,6 @@
 				10D90386173716AF0037CA8F /* BNTableViewUpdates.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		108155B417309E0A00BEFCB1 /* FoodDemo */ = {
-			isa = PBXGroup;
-			children = (
-				108155BD17309E0A00BEFCB1 /* AppDelegate.h */,
-				108155BE17309E0A00BEFCB1 /* AppDelegate.m */,
-				108155CC17309F2C00BEFCB1 /* Food.h */,
-				108155CD17309F2C00BEFCB1 /* Food.m */,
-				108155C917309E3700BEFCB1 /* FoodsViewController.h */,
-				108155CA17309E3700BEFCB1 /* FoodsViewController.m */,
-				108155B517309E0A00BEFCB1 /* Supporting Files */,
-			);
-			path = FoodDemo;
-			sourceTree = "<group>";
-		};
-		108155B517309E0A00BEFCB1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				108155B617309E0A00BEFCB1 /* FoodDemo-Info.plist */,
-				108155B717309E0A00BEFCB1 /* InfoPlist.strings */,
-				108155BA17309E0A00BEFCB1 /* main.m */,
-				108155BC17309E0A00BEFCB1 /* FoodDemo-Prefix.pch */,
-				108155C017309E0A00BEFCB1 /* Default.png */,
-				108155C217309E0A00BEFCB1 /* Default@2x.png */,
-				108155C417309E0A00BEFCB1 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		10A2B1931730B25C0056A99D /* View Controller */ = {
@@ -362,24 +296,6 @@
 			productReference = 106395E9172750E200037F1D /* BNSortedDataControllerTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		108155AE17309E0A00BEFCB1 /* FoodDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 108155C617309E0A00BEFCB1 /* Build configuration list for PBXNativeTarget "FoodDemo" */;
-			buildPhases = (
-				108155AB17309E0A00BEFCB1 /* Sources */,
-				108155AC17309E0A00BEFCB1 /* Frameworks */,
-				108155AD17309E0A00BEFCB1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				108155D31730A08700BEFCB1 /* PBXTargetDependency */,
-			);
-			name = FoodDemo;
-			productName = FoodDemo;
-			productReference = 108155AF17309E0A00BEFCB1 /* FoodDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -403,7 +319,6 @@
 			targets = (
 				106395D7172750E100037F1D /* BNSortedDataController */,
 				106395E8172750E200037F1D /* BNSortedDataControllerTests */,
-				108155AE17309E0A00BEFCB1 /* FoodDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -414,17 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				106395F7172750E200037F1D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		108155AD17309E0A00BEFCB1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				108155B917309E0A00BEFCB1 /* InfoPlist.strings in Resources */,
-				108155C117309E0A00BEFCB1 /* Default.png in Resources */,
-				108155C317309E0A00BEFCB1 /* Default@2x.png in Resources */,
-				108155C517309E0A00BEFCB1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,23 +374,10 @@
 				10A2B1921730B2540056A99D /* BNSortedTableViewController.m in Sources */,
 				10A2B19917314AE30056A99D /* BNSortedTableTests.m in Sources */,
 				10A2B19C17314AEF0056A99D /* BNSortedSectionTests.m in Sources */,
-				10A2B19D17315F110056A99D /* Food.m in Sources */,
 				10B72A43173492090010F0BB /* BNArrayComparison.m in Sources */,
 				1025CF5E1734A2F500A3129D /* BNArrayComparisonTests.m in Sources */,
 				10D90388173716AF0037CA8F /* BNTableViewUpdates.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		108155AB17309E0A00BEFCB1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				108155BB17309E0A00BEFCB1 /* main.m in Sources */,
-				108155BF17309E0A00BEFCB1 /* AppDelegate.m in Sources */,
-				108155CB17309E3700BEFCB1 /* FoodsViewController.m in Sources */,
-				108155CE17309F2C00BEFCB1 /* Food.m in Sources */,
-				10B72A44173492090010F0BB /* BNArrayComparison.m in Sources */,
-				10D90389173716AF0037CA8F /* BNTableViewUpdates.m in Sources */,
+				109F7B1217432A9400B96879 /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,11 +389,6 @@
 			target = 106395D7172750E100037F1D /* BNSortedDataController */;
 			targetProxy = 106395EF172750E200037F1D /* PBXContainerItemProxy */;
 		};
-		108155D31730A08700BEFCB1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 106395D7172750E100037F1D /* BNSortedDataController */;
-			targetProxy = 108155D21730A08700BEFCB1 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -510,14 +396,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				106395F6172750E200037F1D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		108155B717309E0A00BEFCB1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				108155B817309E0A00BEFCB1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -632,31 +510,6 @@
 			};
 			name = Release;
 		};
-		108155C717309E0A00BEFCB1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FoodDemo/FoodDemo-Prefix.pch";
-				INFOPLIST_FILE = "FoodDemo/FoodDemo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		108155C817309E0A00BEFCB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FoodDemo/FoodDemo-Prefix.pch";
-				INFOPLIST_FILE = "FoodDemo/FoodDemo-Info.plist";
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -683,15 +536,6 @@
 			buildConfigurations = (
 				10639601172750E200037F1D /* Debug */,
 				10639602172750E200037F1D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		108155C617309E0A00BEFCB1 /* Build configuration list for PBXNativeTarget "FoodDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				108155C717309E0A00BEFCB1 /* Debug */,
-				108155C817309E0A00BEFCB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

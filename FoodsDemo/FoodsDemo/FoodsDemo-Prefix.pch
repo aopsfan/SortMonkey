@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'FoodDemo' target in the 'FoodDemo' project
+// Prefix header for all source files of the 'FoodsDemo' target in the 'FoodsDemo' project
 //
 
 #import <Availability.h>

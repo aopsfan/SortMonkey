@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  FoodDemo
+//  FoodsDemo
 //
-//  Created by Bruce Ricketts on 4/30/13.
+//  Created by Bruce Ricketts on 5/14/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 

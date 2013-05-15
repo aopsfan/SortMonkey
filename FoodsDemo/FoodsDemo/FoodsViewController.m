@@ -1,13 +1,13 @@
 //
 //  FoodsViewController.m
-//  BNSortedDataController
+//  FoodsDemo
 //
 //  Created by Bruce Ricketts on 4/30/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
 #import "FoodsViewController.h"
-#import "BNSortedDataController.h"
+#import "BNSortedDataController/BNSortedTableViewController.h"
 #import "Food.h"
 
 @implementation FoodsViewController
