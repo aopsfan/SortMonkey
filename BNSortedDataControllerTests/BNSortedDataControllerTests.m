@@ -20,6 +20,88 @@
     self.sortedDataController.sortKey = @"category";
 }
 
+- (void)testAddObject {
+    Food *chicken = [Food foodWithName:@"Chicken" category:@"Meats"];
+    Food *snickers = [Food foodWithName:@"Snickers" category:@"Candy"];
+    
+    [self.sortedDataController addObject:chicken];
+    [self.sortedDataController addObject:snickers];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:0], (NSUInteger)1, @"Candy section should have 1 row");
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)2, @"Dairy section should have 2 rows");
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:2], (NSUInteger)4, @"Fruits sections should have 4 rows");
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:3], (NSUInteger)5, @"Meats section should have 5 rows");
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:4], (NSUInteger)3, @"Veggies section should have 3 rows");
+    
+    Food *chickenFromDataController = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:3]];
+    Food *snickersFromDataController = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    STAssertEqualObjects(chicken, chickenFromDataController, @"%@ should be Chicken", chickenFromDataController.name);
+    STAssertEqualObjects(snickers, snickersFromDataController, @"%@ should be Snickers", snickersFromDataController.name);
+}
+
+- (void)testRemoveObject {
+    Food *mango = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    STAssertTrue([@"Mango" isEqualToString:mango.name], @"Object at index path [1, 1] should be Mango, not %@", mango.name);
+    [self.sortedDataController removeObject:mango];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)3, @"Fruits section should have 3 rows");
+    STAssertFalse([self.sortedDataController.objects containsObject:mango], @"Controller should not have Mango object");
+    
+    Food *orange = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    STAssertTrue([@"Orange" isEqualToString:orange.name], @"Object at index path [1, 1] should be Orange, not %@", orange.name);
+    [self.sortedDataController removeObject:orange];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)2, @"Fruits section should have 2 rows");
+    STAssertFalse([self.sortedDataController.objects containsObject:orange], @"Controller should not have Orange object");
+    
+    Food *apple = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    STAssertTrue([@"Apple" isEqualToString:apple.name], @"Object at index path [1, 1] should be Apple, not %@", apple.name);
+    [self.sortedDataController removeObject:apple];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)1, @"Fruits section should have 1 row");
+    STAssertFalse([self.sortedDataController.objects containsObject:apple], @"Controller should not have Apple object");
+    
+    Food *pineapple = [self.sortedDataController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    STAssertTrue([@"Pineapple" isEqualToString:pineapple.name], @"Object at index path [1, 1] should be Pineapple, not %@", pineapple.name);
+    [self.sortedDataController removeObject:pineapple];
+    
+    STAssertFalse([(NSString *)[self.sortedDataController identifierForSection:1] isEqualToString:@"Fruits"], @"Section at index 1 should have identifier Meats, not %@", [self.sortedDataController identifierForSection:1]);
+}
+
+- (void)testRemoveObjectAtIndexPath {
+    NSIndexPath *mangoIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
+    Food *mango = [self.sortedDataController objectAtIndexPath:mangoIndexPath];
+    STAssertTrue([@"Mango" isEqualToString:mango.name], @"Object at index path [1, 1] should be Mango, not %@", mango.name);
+    [self.sortedDataController removeObjectAtIndexPath:mangoIndexPath];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)3, @"Fruits section should have 3 rows");
+    STAssertFalse([self.sortedDataController.objects containsObject:mango], @"Controller should not have Mango object");
+    
+    NSIndexPath *orangeIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
+    Food *orange = [self.sortedDataController objectAtIndexPath:orangeIndexPath];
+    STAssertTrue([@"Orange" isEqualToString:orange.name], @"Object at index path [1, 1] should be Orange, not %@", orange.name);
+    [self.sortedDataController removeObjectAtIndexPath:orangeIndexPath];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)2, @"Fruits section should have 2 rows");
+    STAssertFalse([self.sortedDataController.objects containsObject:orange], @"Controller should not have Orange object");
+    
+    NSIndexPath *appleIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    Food *apple = [self.sortedDataController objectAtIndexPath:appleIndexPath];
+    STAssertTrue([@"Apple" isEqualToString:apple.name], @"Object at index path [1, 1] should be Apple, not %@", apple.name);
+    [self.sortedDataController removeObjectAtIndexPath:appleIndexPath];
+    
+    STAssertEquals([self.sortedDataController numberOfRowsInSection:1], (NSUInteger)1, @"Fruits section should have 1 row");
+    STAssertFalse([self.sortedDataController.objects containsObject:apple], @"Controller should not have Apple object");
+    
+    NSIndexPath *pineappleIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    Food *pineapple = [self.sortedDataController objectAtIndexPath:pineappleIndexPath];
+    STAssertTrue([@"Pineapple" isEqualToString:pineapple.name], @"Object at index path [1, 1] should be Pineapple, not %@", pineapple.name);
+    [self.sortedDataController removeObjectAtIndexPath:pineappleIndexPath];
+    
+    STAssertFalse([(NSString *)[self.sortedDataController identifierForSection:1] isEqualToString:@"Fruits"], @"Section at index 1 should have identifier Meats, not %@", [self.sortedDataController identifierForSection:1]);
+}
+
 - (void)testNumberOfSections {
     STAssertEquals([self.sortedDataController numberOfSections], (NSUInteger)4, @"Controller should have 4 sections");
 }
@@ -28,7 +110,7 @@
     NSArray *numberOfRowsPerSection = @[ @2, @4, @4, @3 ];
     
     for (NSUInteger index = 0; index < [self.sortedDataController numberOfSections]; index++) {
-        STAssertEquals([self.sortedDataController numberOfRowsInSection:index], [numberOfRowsPerSection[index] unsignedIntegerValue], [NSString stringWithFormat:@"Section %i should have %@ rows", index, numberOfRowsPerSection[index]]);
+        STAssertEquals([self.sortedDataController numberOfRowsInSection:index], [numberOfRowsPerSection[index] unsignedIntegerValue], @"Section %i should have %@ rows", index, numberOfRowsPerSection[index]);
     }
 }
 
@@ -36,7 +118,7 @@
     NSArray *identifiersPerSection = @[ @"Dairy", @"Fruits", @"Meats", @"Vegetables" ];
     
     for (NSUInteger index = 0; index < [self.sortedDataController numberOfSections]; index++) {
-        STAssertEqualObjects([self.sortedDataController identifierForSection:index], identifiersPerSection[index], [NSString stringWithFormat:@"Section %i should have identifier %@", index, identifiersPerSection[index]]);
+        STAssertEqualObjects([self.sortedDataController identifierForSection:index], identifiersPerSection[index], @"Section %i should have identifier %@", index, identifiersPerSection[index]);
     }
 }
 

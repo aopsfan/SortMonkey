@@ -17,6 +17,7 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 @interface BNSortedDataController ()
 @property (strong, nonatomic)BNSortedTable *sortedTable;
 @property (strong, nonatomic)BNArrayComparison *arrayComparison;
+@property (strong, nonatomic)NSMutableArray *mutableObjects;
 @property BOOL shouldUpdateTable;
 @property BOOL shouldDumpTableData;
 
@@ -36,6 +37,7 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
     if (self) {
         _sortedTable = [[BNSortedTable alloc] init];
         _arrayComparison = [BNArrayComparison arrayComparisonWithOldArray:@[] updatedArray:@[]];
+        _mutableObjects = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -93,8 +95,9 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 #pragma mark Setters/getters
 
 - (void)setObjects:(NSArray *)objects {
-    [self.arrayComparison addArrayComparison:[BNArrayComparison arrayComparisonWithOldArray:_objects updatedArray:objects]];
-    _objects = objects;
+    [self.arrayComparison addArrayComparison:[BNArrayComparison arrayComparisonWithOldArray:self.objects updatedArray:objects]];
+    [self.mutableObjects setArray:objects];
+    
     self.shouldUpdateTable = YES;
 }
 
@@ -107,6 +110,10 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
     }
 }
 
+- (NSArray *)objects {
+    return [self.mutableObjects copy];
+}
+
 - (BNSortedTable *)sortedTable {
     [self commitUpdates];
     
@@ -115,16 +122,23 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 
 #pragma mark Editing content
 
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-    id<BNSortableData> object = [self objectAtIndexPath:indexPath];
-    
-    [self.arrayComparison addDeletedObject:object];
-    
-    NSMutableArray *tempObjects = [NSMutableArray arrayWithArray:self.objects];
-    [tempObjects addObject:object];
-    self.objects = [NSArray arrayWithArray:tempObjects];
+- (void)addObject:(id)object {
+    [self.arrayComparison addAddedObject:object];
+    [self.mutableObjects addObject:object];
     
     self.shouldUpdateTable = YES;
+}
+
+- (void)removeObject:(id)object {
+    [self.arrayComparison addDeletedObject:object];
+    [self.mutableObjects removeObject:object];
+    
+    self.shouldUpdateTable = YES;
+}
+
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+    id<BNSortableData> object = [self objectAtIndexPath:indexPath];
+    [self removeObject:object];
 }
 
 #pragma mark Table view data source helpers

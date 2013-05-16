@@ -23,6 +23,8 @@
 @property (weak, nonatomic)id<BNSortedDataControllerDelegate> delegate;
 
 // Editing content
+- (void)addObject:(id)object;
+- (void)removeObject:(id)object;
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
 
 // Table view data source helpers
