@@ -1,21 +1,21 @@
 //
-//  BNArrayComparison.m
-//  BNSortedDataController
+//  SMContentUpdates.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 5/3/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNArrayComparison.h"
+#import "SMContentUpdates.h"
 
-@interface BNArrayComparison ()
+@interface SMContentUpdates ()
 @property (strong, nonatomic)NSMutableArray *mutableAddedObjects, *mutableDeletedObjects;
 
 @property BOOL shouldRefreshAddedObjects;
 @property BOOL shouldRefreshDeletedObjects;
 @end
 
-@implementation BNArrayComparison
+@implementation SMContentUpdates
 
 #pragma mark Setters
 
@@ -43,12 +43,12 @@
     return self;
 }
 
-+ (BNArrayComparison *)arrayComparisonWithOldArray:(NSArray *)oldArray updatedArray:(NSArray *)updatedArray {
-    BNArrayComparison *arrayComparison = [[BNArrayComparison alloc] init];
-    arrayComparison.oldArray = oldArray;
-    arrayComparison.updatedArray = updatedArray;
++ (SMContentUpdates *)contentUpdatesWithOldArray:(NSArray *)oldArray updatedArray:(NSArray *)updatedArray {
+    SMContentUpdates *contentUpdates = [[SMContentUpdates alloc] init];
+    contentUpdates.oldArray = oldArray;
+    contentUpdates.updatedArray = updatedArray;
     
-    return arrayComparison;
+    return contentUpdates;
 }
 
 #pragma mark Getting data
@@ -103,12 +103,12 @@
     }
 }
 
-- (void)addArrayComparison:(BNArrayComparison *)arrayComparison {
-    for (id addedObject in arrayComparison.addedObjects) {
+- (void)addContentUpdates:(SMContentUpdates *)contentUpdates {
+    for (id addedObject in contentUpdates.addedObjects) {
         [self addAddedObject:addedObject];
     }
     
-    for (id deletedObject in arrayComparison.deletedObjects) {
+    for (id deletedObject in contentUpdates.deletedObjects) {
         [self addDeletedObject:deletedObject];
     }
 }

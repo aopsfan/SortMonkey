@@ -1,14 +1,14 @@
 //
-//  BNTableViewUpdates.m
-//  BNSortedDataController
+//  SMTableViewUpdates.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 5/5/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNTableViewUpdates.h"
+#import "SMTableViewUpdates.h"
 
-@implementation BNTableViewUpdates
+@implementation SMTableViewUpdates
 
 - (id)init
 {

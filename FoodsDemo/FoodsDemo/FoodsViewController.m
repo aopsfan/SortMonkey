@@ -7,7 +7,6 @@
 //
 
 #import "FoodsViewController.h"
-#import "BNSortedDataController/BNSortedTableViewController.h"
 #import "Food.h"
 
 @implementation FoodsViewController

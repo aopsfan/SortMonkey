@@ -1,24 +1,24 @@
 //
-//  BNSortedTableTests.m
-//  BNSortedDataController
+//  SMSortedTableTests.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 5/1/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedTableTests.h"
-#import "BNSortedSection.h"
+#import "SMSortedTableTests.h"
+#import "SMSortedSection.h"
 
-@implementation BNSortedTableTests
+@implementation SMSortedTableTests
 
 - (NSArray *)sampleSections {
-    BNSortedSection *fruits = [[BNSortedSection alloc] init];
-    BNSortedSection *meats = [[BNSortedSection alloc] init];
-    BNSortedSection *dairy = [[BNSortedSection alloc] init];
+    SMSortedSection *fruits = [[SMSortedSection alloc] init];
+    SMSortedSection *meats = [[SMSortedSection alloc] init];
+    SMSortedSection *dairy = [[SMSortedSection alloc] init];
     
-    fruits.identifier = (id<BNSortableData>)@"Fruits";
-    meats.identifier = (id<BNSortableData>)@"Meats";
-    dairy.identifier = (id<BNSortableData>)@"Dairy";
+    fruits.identifier = (id<SMSortableData>)@"Fruits";
+    meats.identifier = (id<SMSortableData>)@"Meats";
+    dairy.identifier = (id<SMSortableData>)@"Dairy";
     
     return @[ fruits, meats, dairy ];
 }
@@ -26,18 +26,18 @@
 - (void)setUp {
     [super setUp];
     
-    _sortedTable = [[BNSortedTable alloc] init];
+    _sortedTable = [[SMSortedTable alloc] init];
 }
 
 - (void)testAddAndRemoveSection {
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     
     STAssertEquals([self.sortedTable numberOfSections], (NSUInteger)3, @"Table should have 3 sections");
     
     NSArray *sections = [self.sortedTable sortedSections];
-    for (BNSortedSection *section in sections) {
+    for (SMSortedSection *section in sections) {
         [self.sortedTable removeSection:section];
     }
     
@@ -45,7 +45,7 @@
 }
 
 - (void)testRemoveAllSections {
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     
@@ -55,13 +55,13 @@
 }
 
 - (void)testAllSections {
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     
     BOOL sectionIsDairy, sectionIsFruits, sectionIsMeats;
     
-    for (BNSortedSection *section in [self.sortedTable allSections]) {
+    for (SMSortedSection *section in [self.sortedTable allSections]) {
         sectionIsDairy = [(NSString *)section.identifier isEqualToString:@"Dairy"];
         sectionIsFruits = [(NSString *)section.identifier isEqualToString:@"Fruits"];
         sectionIsMeats = [(NSString *)section.identifier isEqualToString:@"Meats"];
@@ -71,13 +71,13 @@
 }
 
 - (void)testSortedSections {
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     
-    BNSortedSection *section1 = [self.sortedTable sortedSectionAtIndex:0];
-    BNSortedSection *section2 = [self.sortedTable sortedSectionAtIndex:1];
-    BNSortedSection *section3 = [self.sortedTable sortedSectionAtIndex:2];
+    SMSortedSection *section1 = [self.sortedTable sortedSectionAtIndex:0];
+    SMSortedSection *section2 = [self.sortedTable sortedSectionAtIndex:1];
+    SMSortedSection *section3 = [self.sortedTable sortedSectionAtIndex:2];
     
     NSString *section1Identifier = (NSString *)section1.identifier;
     NSString *section2Identifier = (NSString *)section2.identifier;
@@ -89,17 +89,17 @@
 }
 
 - (void)testSortedSectionAtIndex {
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     
-    BNSortedSection *sectionAtIndex0 = [self.sortedTable sortedSectionAtIndex:0];
-    BNSortedSection *sectionAtIndex1 = [self.sortedTable sortedSectionAtIndex:1];
-    BNSortedSection *sectionAtIndex2 = [self.sortedTable sortedSectionAtIndex:2];
+    SMSortedSection *sectionAtIndex0 = [self.sortedTable sortedSectionAtIndex:0];
+    SMSortedSection *sectionAtIndex1 = [self.sortedTable sortedSectionAtIndex:1];
+    SMSortedSection *sectionAtIndex2 = [self.sortedTable sortedSectionAtIndex:2];
     
-    BNSortedSection *section0 = self.sortedTable.sortedSections[0];
-    BNSortedSection *section1 = self.sortedTable.sortedSections[1];
-    BNSortedSection *section2 = self.sortedTable.sortedSections[2];
+    SMSortedSection *section0 = self.sortedTable.sortedSections[0];
+    SMSortedSection *section1 = self.sortedTable.sortedSections[1];
+    SMSortedSection *section2 = self.sortedTable.sortedSections[2];
     
     STAssertEqualObjects(sectionAtIndex0, section0, @"sortedSections item at index 0 should equal sortedSectionAtIndex 0");
     STAssertEqualObjects(sectionAtIndex1, section1, @"sortedSections item at index 1 should equal sortedSectionAtIndex 1");
@@ -109,7 +109,7 @@
 - (void)testNumberOfSections {
     STAssertEquals([self.sortedTable numberOfSections], (NSUInteger)0, @"Table should have 0 sections");
     
-    for (BNSortedSection *section in [self sampleSections]) {
+    for (SMSortedSection *section in [self sampleSections]) {
         [self.sortedTable addSection:section];
     }
     

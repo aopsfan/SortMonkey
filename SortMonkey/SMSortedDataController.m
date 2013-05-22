@@ -1,22 +1,22 @@
 //
-//  BNSortedDataController.m
-//  BNSortedDataController
+//  SMSortedDataController.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 4/23/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedDataController.h"
-#import "BNSortedTable.h"
-#import "BNSortedSection.h"
-#import "BNArrayComparison.h"
-#import "BNTableViewUpdates.h"
+#import "SMSortedDataController.h"
+#import "SMSortedTable.h"
+#import "SMSortedSection.h"
+#import "SMContentUpdates.h"
+#import "SMTableViewUpdates.h"
 
-NSString *BNNotSortableDataException = @"BNNotSortableDataException";
+NSString *SMNotSortableDataException = @"SMNotSortableDataException";
 
-@interface BNSortedDataController ()
-@property (strong, nonatomic)BNSortedTable *sortedTable;
-@property (strong, nonatomic)BNArrayComparison *arrayComparison;
+@interface SMSortedDataController ()
+@property (strong, nonatomic)SMSortedTable *sortedTable;
+@property (strong, nonatomic)SMContentUpdates *contentUpdates;
 @property (strong, nonatomic)NSMutableArray *mutableObjects;
 @property BOOL shouldUpdateTable;
 @property BOOL shouldDumpTableData;
@@ -24,19 +24,19 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 - (NSMutableArray *)addedIndexPaths;
 - (NSMutableArray *)deletedIndexPaths;
 
-- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier commitUpdates:(BOOL)commitUpdates;
-- (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object commitUpdates:(BOOL)commitUpdates;
+- (NSUInteger)sectionForIdentifier:(id<SMSortableData>)identifier commitUpdates:(BOOL)commitUpdates;
+- (NSIndexPath *)indexPathForObject:(id<SMSortableData>)object commitUpdates:(BOOL)commitUpdates;
 
 @end
 
-@implementation BNSortedDataController
+@implementation SMSortedDataController
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _sortedTable = [[BNSortedTable alloc] init];
-        _arrayComparison = [BNArrayComparison arrayComparisonWithOldArray:@[] updatedArray:@[]];
+        _sortedTable = [[SMSortedTable alloc] init];
+        _contentUpdates = [SMContentUpdates contentUpdatesWithOldArray:@[] updatedArray:@[]];
         _mutableObjects = [[NSMutableArray alloc] init];
     }
     return self;
@@ -45,9 +45,9 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 #pragma mark Private
 
 - (NSMutableArray *)addedIndexPaths {
-    NSMutableArray *addedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.addedObjects.count];
+    NSMutableArray *addedIndexPaths = [NSMutableArray arrayWithCapacity:self.contentUpdates.addedObjects.count];
     
-    for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
+    for (id<SMSortableData> object in self.contentUpdates.addedObjects) {
         [addedIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
     }
     
@@ -55,20 +55,20 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 }
 
 - (NSMutableArray *)deletedIndexPaths {
-    NSMutableArray *deletedIndexPaths = [NSMutableArray arrayWithCapacity:self.arrayComparison.deletedObjects.count];
+    NSMutableArray *deletedIndexPaths = [NSMutableArray arrayWithCapacity:self.contentUpdates.deletedObjects.count];
     
-    for (id<BNSortableData> object in self.arrayComparison.deletedObjects) {
+    for (id<SMSortableData> object in self.contentUpdates.deletedObjects) {
         [deletedIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
     }
     
     return deletedIndexPaths;
 }
 
-- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier commitUpdates:(BOOL)commitUpdates {
-    BNSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
+- (NSUInteger)sectionForIdentifier:(id<SMSortableData>)identifier commitUpdates:(BOOL)commitUpdates {
+    SMSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
     NSUInteger section = NSNotFound;
     
-    for (BNSortedSection *sortedSection in sortedTable.sortedSections) {
+    for (SMSortedSection *sortedSection in sortedTable.sortedSections) {
         if (sortedSection.identifier == identifier) {
             section = [sortedTable.sortedSections indexOfObject:sortedSection];
         }
@@ -77,11 +77,11 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
     return section;
 }
 
-- (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object commitUpdates:(BOOL)commitUpdates {
-    BNSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
+- (NSIndexPath *)indexPathForObject:(id<SMSortableData>)object commitUpdates:(BOOL)commitUpdates {
+    SMSortedTable *sortedTable = commitUpdates ? self.sortedTable : _sortedTable;
     NSIndexPath *indexPath = nil;
     
-    for (BNSortedSection *sortedSection in sortedTable.sortedSections) {
+    for (SMSortedSection *sortedSection in sortedTable.sortedSections) {
         if ([sortedSection.allObjects containsObject:object]) {
             NSUInteger row = [sortedSection.sortedObjects indexOfObject:object];
             NSUInteger section = [sortedTable.sortedSections indexOfObject:sortedSection];
@@ -95,7 +95,7 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 #pragma mark Setters/getters
 
 - (void)setObjects:(NSArray *)objects {
-    [self.arrayComparison addArrayComparison:[BNArrayComparison arrayComparisonWithOldArray:self.objects updatedArray:objects]];
+    [self.contentUpdates addContentUpdates:[SMContentUpdates contentUpdatesWithOldArray:self.objects updatedArray:objects]];
     [self.mutableObjects setArray:objects];
     
     self.shouldUpdateTable = YES;
@@ -114,7 +114,7 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
     return [self.mutableObjects copy];
 }
 
-- (BNSortedTable *)sortedTable {
+- (SMSortedTable *)sortedTable {
     [self commitUpdates];
     
     return _sortedTable;
@@ -123,21 +123,21 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 #pragma mark Editing content
 
 - (void)addObject:(id)object {
-    [self.arrayComparison addAddedObject:object];
+    [self.contentUpdates addAddedObject:object];
     [self.mutableObjects addObject:object];
     
     self.shouldUpdateTable = YES;
 }
 
 - (void)removeObject:(id)object {
-    [self.arrayComparison addDeletedObject:object];
+    [self.contentUpdates addDeletedObject:object];
     [self.mutableObjects removeObject:object];
     
     self.shouldUpdateTable = YES;
 }
 
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-    id<BNSortableData> object = [self objectAtIndexPath:indexPath];
+    id<SMSortableData> object = [self objectAtIndexPath:indexPath];
     [self removeObject:object];
 }
 
@@ -148,43 +148,43 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
 }
 
 - (NSUInteger)numberOfRowsInSection:(NSUInteger)section {
-    BNSortedSection *sortedSection = [self.sortedTable sortedSections][section];
+    SMSortedSection *sortedSection = [self.sortedTable sortedSections][section];
     return [sortedSection numberOfObjects];
 }
 
-- (id<BNSortableData>)identifierForSection:(NSUInteger)section {
-    BNSortedSection *sortedSection = [self.sortedTable sortedSections][section];
+- (id<SMSortableData>)identifierForSection:(NSUInteger)section {
+    SMSortedSection *sortedSection = [self.sortedTable sortedSections][section];
     return sortedSection.identifier;
 }
 
-- (id<BNSortableData>)objectAtIndexPath:(NSIndexPath *)indexPath {
-    BNSortedSection *sortedSection = [self.sortedTable sortedSectionAtIndex:indexPath.section];
+- (id<SMSortableData>)objectAtIndexPath:(NSIndexPath *)indexPath {
+    SMSortedSection *sortedSection = [self.sortedTable sortedSectionAtIndex:indexPath.section];
     return [sortedSection sortedObjectAtIndex:indexPath.row];
 }
 
 #pragma mark Other
 
-- (NSUInteger)sectionForIdentifier:(id<BNSortableData>)identifier {
+- (NSUInteger)sectionForIdentifier:(id<SMSortableData>)identifier {
     return [self sectionForIdentifier:identifier commitUpdates:YES];
 }
 
-- (NSIndexPath *)indexPathForObject:(id<BNSortableData>)object {
+- (NSIndexPath *)indexPathForObject:(id<SMSortableData>)object {
     return [self indexPathForObject:object commitUpdates:YES];
 }
 
 - (void)commitUpdates {
     if (self.shouldUpdateTable) {
-        BNTableViewUpdates *tableViewUpdates = [[BNTableViewUpdates alloc] init];
+        SMTableViewUpdates *tableViewUpdates = [[SMTableViewUpdates alloc] init];
         
         // Delete old objects
         
-        for (id<BNSortableData> deletedObject in self.arrayComparison.deletedObjects) {
+        for (id<SMSortableData> deletedObject in self.contentUpdates.deletedObjects) {
             [tableViewUpdates.deletedRowIndexPaths addObject:[self indexPathForObject:deletedObject commitUpdates:NO]];
             
-            BNSortedSection *section = nil;
-            id<BNSortableData> identifier = [deletedObject valueForKey:self.sortKey];
+            SMSortedSection *section = nil;
+            id<SMSortableData> identifier = [deletedObject valueForKey:self.sortKey];
             
-            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
+            for (SMSortedSection *tempSection in [_sortedTable allSections]) {
                 if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
                     section = tempSection;
                 }
@@ -201,28 +201,28 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
         
         // Add new objects
         
-        for (id<BNSortableData> object in self.arrayComparison.addedObjects) {
-            if (![object conformsToProtocol:@protocol(BNSortableData)]) {
-                NSException *exception = [NSException exceptionWithName:BNNotSortableDataException reason:[NSString stringWithFormat:@"Object %@ does not conform to BNSortableData protocol", object] userInfo:nil];
+        for (id<SMSortableData> object in self.contentUpdates.addedObjects) {
+            if (![object conformsToProtocol:@protocol(SMSortableData)]) {
+                NSException *exception = [NSException exceptionWithName:SMNotSortableDataException reason:[NSString stringWithFormat:@"Object %@ does not conform to SMSortableData protocol", object] userInfo:nil];
                 [exception raise];
             }
             
-            BNSortedSection *section = nil;
-            id<BNSortableData> identifier = [object valueForKey:self.sortKey];
+            SMSortedSection *section = nil;
+            id<SMSortableData> identifier = [object valueForKey:self.sortKey];
             
             if (![identifier respondsToSelector:@selector(compare:)]) {
-                NSException *exception = [NSException exceptionWithName:BNNotSortableDataException reason:[NSString stringWithFormat:@"Section identifier %@ does not respond to -compare:", identifier] userInfo:nil];
+                NSException *exception = [NSException exceptionWithName:SMNotSortableDataException reason:[NSString stringWithFormat:@"Section identifier %@ does not respond to -compare:", identifier] userInfo:nil];
                 [exception raise];
             }
             
-            for (BNSortedSection *tempSection in [_sortedTable allSections]) {
+            for (SMSortedSection *tempSection in [_sortedTable allSections]) {
                 if ([tempSection.identifier compare:identifier] == NSOrderedSame) {
                     section = tempSection;
                 }
             }
             
             if (!section) {
-                section = [[BNSortedSection alloc] init];
+                section = [[SMSortedSection alloc] init];
                 section.identifier = identifier;
                 
                 [_sortedTable addSection:section];
@@ -240,7 +240,7 @@ NSString *BNNotSortableDataException = @"BNNotSortableDataException";
         self.shouldUpdateTable = NO;
         self.shouldDumpTableData = NO;
         
-        [self.arrayComparison clear];
+        [self.contentUpdates clear];
         
         // Notify delegate
         

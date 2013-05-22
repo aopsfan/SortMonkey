@@ -1,21 +1,21 @@
 //
-//  BNSortedDataControllerTests.m
-//  BNSortedDataControllerTests
+//  SMSortedDataControllerTests.m
+//  SMSortedDataControllerTests
 //
 //  Created by Bruce Ricketts on 4/23/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedDataControllerTests.h"
-#import "BNSortedSection.h"
+#import "SMSortedDataControllerTests.h"
+#import "SMSortedSection.h"
 #import "Food.h"
 
-@implementation BNSortedDataControllerTests
+@implementation SMSortedDataControllerTests
 
 - (void)setUp {
     [super setUp];
     
-    _sortedDataController = [[BNSortedDataController alloc] init];
+    _sortedDataController = [[SMSortedDataController alloc] init];
     [self.sortedDataController setObjects:[Food sampleFoods]];
     self.sortedDataController.sortKey = @"category";
 }
@@ -154,10 +154,10 @@
 }
 
 - (void)testSectionForIdentifier {
-    NSUInteger sectionForDairyIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Dairy"];
-    NSUInteger sectionForFruitsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Fruits"];
-    NSUInteger sectionForMeatsIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Meats"];
-    NSUInteger sectionForVeggiesIdentifier = [self.sortedDataController sectionForIdentifier:(id<BNSortableData>)@"Vegetables"];
+    NSUInteger sectionForDairyIdentifier = [self.sortedDataController sectionForIdentifier:(id<SMSortableData>)@"Dairy"];
+    NSUInteger sectionForFruitsIdentifier = [self.sortedDataController sectionForIdentifier:(id<SMSortableData>)@"Fruits"];
+    NSUInteger sectionForMeatsIdentifier = [self.sortedDataController sectionForIdentifier:(id<SMSortableData>)@"Meats"];
+    NSUInteger sectionForVeggiesIdentifier = [self.sortedDataController sectionForIdentifier:(id<SMSortableData>)@"Vegetables"];
     
     STAssertEquals(sectionForDairyIdentifier, (NSUInteger)0, @"Dairy section should be at index 0");
     STAssertEquals(sectionForFruitsIdentifier, (NSUInteger)1, @"Fruits section should be at index 1");

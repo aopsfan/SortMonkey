@@ -1,6 +1,6 @@
 //
-//  BNSortedTable.h
-//  BNSortedDataController
+//  SMSortedTable.h
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 4/23/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class BNSortedSection;
-@interface BNSortedTable : NSObject
+@class SMSortedSection;
+@interface SMSortedTable : NSObject
 
 // Editing data
-- (void)addSection:(BNSortedSection *)section;
-- (void)removeSection:(BNSortedSection *)section;
+- (void)addSection:(SMSortedSection *)section;
+- (void)removeSection:(SMSortedSection *)section;
 - (void)removeAllSections;
 
 // Getting data
 - (NSArray *)allSections;
 - (NSArray *)sortedSections;
-- (BNSortedSection *)sortedSectionAtIndex:(NSUInteger)index;
+- (SMSortedSection *)sortedSectionAtIndex:(NSUInteger)index;
 - (NSUInteger)numberOfSections;
 
 @end

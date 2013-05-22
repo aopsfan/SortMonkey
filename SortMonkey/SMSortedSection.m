@@ -1,20 +1,20 @@
 //
-//  BNSortedSection.m
-//  BNSortedDataController
+//  SMSortedSection.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 4/23/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedSection.h"
+#import "SMSortedSection.h"
 
-@interface BNSortedSection ()
+@interface SMSortedSection ()
 @property (strong, nonatomic)NSMutableArray *objects;
 @property (strong, nonatomic)NSArray *sortedObjects;
 @property BOOL shouldRefreshSortedObjects;
 @end
 
-@implementation BNSortedSection
+@implementation SMSortedSection
 
 - (id)init
 {
@@ -25,19 +25,19 @@
     return self;
 }
 
-- (NSComparisonResult)compare:(id<BNSortableData>)otherObject {
-    BNSortedSection *section = (BNSortedSection *)otherObject;
+- (NSComparisonResult)compare:(id<SMSortableData>)otherObject {
+    SMSortedSection *section = (SMSortedSection *)otherObject;
     return [self.identifier compare:section.identifier];
 }
 
 #pragma mark Editing data
 
-- (void)addObject:(id<BNSortableData>)object {
+- (void)addObject:(id<SMSortableData>)object {
     [self.objects addObject:object];
     self.shouldRefreshSortedObjects = YES;
 }
 
-- (void)removeObject:(id<BNSortableData>)object {
+- (void)removeObject:(id<SMSortableData>)object {
     [self.objects removeObject:object];
     self.shouldRefreshSortedObjects = YES;
 }
@@ -62,7 +62,7 @@
     return _sortedObjects;
 }
 
-- (id<BNSortableData>)sortedObjectAtIndex:(NSUInteger)index {
+- (id<SMSortableData>)sortedObjectAtIndex:(NSUInteger)index {
     return self.sortedObjects[index];
 }
 

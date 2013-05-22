@@ -10,7 +10,7 @@
 
 @implementation Food
 
-- (NSComparisonResult)compare:(id<BNSortableData>)otherObject {
+- (NSComparisonResult)compare:(id<SMSortableData>)otherObject {
     Food *otherFood = (Food *)otherObject;
     return [self.name compare:otherFood.name];
 }

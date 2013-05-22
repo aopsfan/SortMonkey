@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BNSortedDataController/BNSortedTableViewController.h"
+#import "SortMonkey/SMSortedTableViewController.h"
 
-@interface FoodsViewController : BNSortedTableViewController
+@interface FoodsViewController : SMSortedTableViewController
 
 @end

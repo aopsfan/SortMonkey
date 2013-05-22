@@ -16,25 +16,25 @@
 		103C4470174326C80018F290 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 103C446F174326C80018F290 /* Default.png */; };
 		103C4472174326C80018F290 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 103C4471174326C80018F290 /* Default@2x.png */; };
 		103C4474174326C80018F290 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 103C4473174326C80018F290 /* Default-568h@2x.png */; };
+		104317B4174C41CF003418FD /* libSortMonkey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104317B1174C41C2003418FD /* libSortMonkey.a */; };
 		109F7AFE1743272700B96879 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 109F7AFD1743272700B96879 /* Food.m */; };
 		109F7B011743276000B96879 /* FoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 109F7B001743276000B96879 /* FoodsViewController.m */; };
-		109F7B0B174328EB00B96879 /* libBNSortedDataController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 109F7B08174328DC00B96879 /* libBNSortedDataController.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		109F7B07174328DC00B96879 /* PBXContainerItemProxy */ = {
+		104317B0174C41C2003418FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 109F7B02174328DC00B96879 /* BNSortedDataController.xcodeproj */;
+			containerPortal = 104317AB174C41C2003418FD /* SortMonkey.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 106395D8172750E100037F1D;
-			remoteInfo = BNSortedDataController;
+			remoteInfo = SortMonkey;
 		};
-		109F7B09174328DC00B96879 /* PBXContainerItemProxy */ = {
+		104317B2174C41C2003418FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 109F7B02174328DC00B96879 /* BNSortedDataController.xcodeproj */;
+			containerPortal = 104317AB174C41C2003418FD /* SortMonkey.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 106395E9172750E200037F1D;
-			remoteInfo = BNSortedDataControllerTests;
+			remoteInfo = SortMonkeyTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -52,11 +52,11 @@
 		103C446F174326C80018F290 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		103C4471174326C80018F290 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		103C4473174326C80018F290 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		104317AB174C41C2003418FD /* SortMonkey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SortMonkey.xcodeproj; path = ../SortMonkey.xcodeproj; sourceTree = "<group>"; };
 		109F7AFC1743272700B96879 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		109F7AFD1743272700B96879 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		109F7AFF1743276000B96879 /* FoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodsViewController.h; sourceTree = "<group>"; };
 		109F7B001743276000B96879 /* FoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodsViewController.m; sourceTree = "<group>"; };
-		109F7B02174328DC00B96879 /* BNSortedDataController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BNSortedDataController.xcodeproj; path = ../BNSortedDataController.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				109F7B0B174328EB00B96879 /* libBNSortedDataController.a in Frameworks */,
+				104317B4174C41CF003418FD /* libSortMonkey.a in Frameworks */,
 				103C445E174326C80018F290 /* UIKit.framework in Frameworks */,
 				103C4460174326C80018F290 /* Foundation.framework in Frameworks */,
 				103C4462174326C80018F290 /* CoreGraphics.framework in Frameworks */,
@@ -77,7 +77,7 @@
 		103C4451174326C80018F290 = {
 			isa = PBXGroup;
 			children = (
-				109F7B02174328DC00B96879 /* BNSortedDataController.xcodeproj */,
+				104317AB174C41C2003418FD /* SortMonkey.xcodeproj */,
 				103C4463174326C80018F290 /* FoodsDemo */,
 				103C445C174326C80018F290 /* Frameworks */,
 				103C445B174326C80018F290 /* Products */,
@@ -130,11 +130,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		109F7B03174328DC00B96879 /* Products */ = {
+		104317AC174C41C2003418FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				109F7B08174328DC00B96879 /* libBNSortedDataController.a */,
-				109F7B0A174328DC00B96879 /* BNSortedDataControllerTests.octest */,
+				104317B1174C41C2003418FD /* libSortMonkey.a */,
+				104317B3174C41C2003418FD /* SortMonkeyTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,8 +180,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 109F7B03174328DC00B96879 /* Products */;
-					ProjectRef = 109F7B02174328DC00B96879 /* BNSortedDataController.xcodeproj */;
+					ProductGroup = 104317AC174C41C2003418FD /* Products */;
+					ProjectRef = 104317AB174C41C2003418FD /* SortMonkey.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -192,18 +192,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		109F7B08174328DC00B96879 /* libBNSortedDataController.a */ = {
+		104317B1174C41C2003418FD /* libSortMonkey.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libBNSortedDataController.a;
-			remoteRef = 109F7B07174328DC00B96879 /* PBXContainerItemProxy */;
+			path = libSortMonkey.a;
+			remoteRef = 104317B0174C41C2003418FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		109F7B0A174328DC00B96879 /* BNSortedDataControllerTests.octest */ = {
+		104317B3174C41C2003418FD /* SortMonkeyTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = BNSortedDataControllerTests.octest;
-			remoteRef = 109F7B09174328DC00B96879 /* PBXContainerItemProxy */;
+			path = SortMonkeyTests.octest;
+			remoteRef = 104317B2174C41C2003418FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

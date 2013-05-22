@@ -1,21 +1,21 @@
 //
-//  BNSortedTableViewController.m
-//  BNSortedDataController
+//  SMSortedTableViewController.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 4/30/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedTableViewController.h"
-#import "BNTableViewUpdates.h"
+#import "SMSortedTableViewController.h"
+#import "SMTableViewUpdates.h"
 
-@implementation BNSortedTableViewController
+@implementation SMSortedTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        _sortedDataController = [[BNSortedDataController alloc] init];
+        _sortedDataController = [[SMSortedDataController alloc] init];
         self.sortedDataController.delegate = self;
     }
     return self;
@@ -25,7 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _sortedDataController = [[BNSortedDataController alloc] init];
+        _sortedDataController = [[SMSortedDataController alloc] init];
         self.sortedDataController.delegate = self;
     }
     return self;
@@ -42,7 +42,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    id<BNSortableData> identifier = [self.sortedDataController identifierForSection:section];
+    id<SMSortableData> identifier = [self.sortedDataController identifierForSection:section];
     
     if ([identifier isKindOfClass:[NSString class]]) {
         return (NSString *)identifier;
@@ -62,7 +62,7 @@
 
 #pragma mark - Sorted data controller delegate
 
-- (void)sortedDataController:(BNSortedDataController *)controller didCommitUpdates:(BNTableViewUpdates *)tableViewUpdates {
+- (void)sortedDataController:(SMSortedDataController *)controller didCommitUpdates:(SMTableViewUpdates *)tableViewUpdates {
     [self.tableView beginUpdates];
     
     [self.tableView deleteRowsAtIndexPaths:tableViewUpdates.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];

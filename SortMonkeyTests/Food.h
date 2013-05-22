@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNSortableData.h"
+#import "SMSortableData.h"
 
-@interface Food : NSObject <BNSortableData>
+@interface Food : NSObject <SMSortableData>
 @property (weak, nonatomic)NSString *name;
 @property (strong, nonatomic)NSString *category;
 

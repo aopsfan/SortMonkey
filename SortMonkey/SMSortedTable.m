@@ -1,20 +1,20 @@
 //
-//  BNSortedTable.m
-//  BNSortedDataController
+//  SMSortedTable.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 4/23/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedTable.h"
+#import "SMSortedTable.h"
 
-@interface BNSortedTable ()
+@interface SMSortedTable ()
 @property (strong, nonatomic)NSMutableArray *sections;
 @property (strong, nonatomic)NSArray *sortedSections;
 @property BOOL shouldRefreshSortedSections;
 @end
 
-@implementation BNSortedTable
+@implementation SMSortedTable
 
 - (id)init
 {
@@ -27,12 +27,12 @@
 
 #pragma mark Editing data
 
-- (void)addSection:(BNSortedSection *)section {
+- (void)addSection:(SMSortedSection *)section {
     [self.sections addObject:section];
     self.shouldRefreshSortedSections = YES;
 }
 
-- (void)removeSection:(BNSortedSection *)section {
+- (void)removeSection:(SMSortedSection *)section {
     [self.sections removeObject:section];
     self.shouldRefreshSortedSections = YES;
 }
@@ -57,7 +57,7 @@
     return _sortedSections;
 }
 
-- (BNSortedSection *)sortedSectionAtIndex:(NSUInteger)index {
+- (SMSortedSection *)sortedSectionAtIndex:(NSUInteger)index {
     return self.sortedSections[index];
 }
 

@@ -1,14 +1,14 @@
 //
-//  BNSortedSectionTests.m
-//  BNSortedDataController
+//  SMSortedSectionTests.m
+//  SMSortedDataController
 //
 //  Created by Bruce Ricketts on 5/1/13.
 //  Copyright (c) 2013 Bruce Ricketts. All rights reserved.
 //
 
-#import "BNSortedSectionTests.h"
+#import "SMSortedSectionTests.h"
 
-@implementation BNSortedSectionTests
+@implementation SMSortedSectionTests
 
 - (NSArray *)sectionMembers {
     return @[ @"Apple", @"Orange", @"Banana", @"Pineapple", @"123" ];
@@ -17,7 +17,7 @@
 - (void)setUp {
     [super setUp];
     
-    _sortedSection = [[BNSortedSection alloc] init];
+    _sortedSection = [[SMSortedSection alloc] init];
 }
 
 - (void)testAddAndRemoveObject {
