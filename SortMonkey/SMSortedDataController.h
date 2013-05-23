@@ -29,7 +29,7 @@
 
 // Table view data source helpers
 - (NSUInteger)numberOfSections;
-- (NSUInteger)numberOfRowsInSection:(NSUInteger)section;
+- (NSUInteger)numberOfObjectsInSection:(NSUInteger)section;
 - (id<SMSortableData>)identifierForSection:(NSUInteger)section;
 - (id<SMSortableData>)objectAtIndexPath:(NSIndexPath *)indexPath;
 

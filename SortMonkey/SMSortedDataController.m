@@ -147,7 +147,7 @@ NSString *SMNotSortableDataException = @"SMNotSortableDataException";
     return [self.sortedTable numberOfSections];
 }
 
-- (NSUInteger)numberOfRowsInSection:(NSUInteger)section {
+- (NSUInteger)numberOfObjectsInSection:(NSUInteger)section {
     SMSortedSection *sortedSection = [self.sortedTable sortedSections][section];
     return [sortedSection numberOfObjects];
 }
@@ -235,7 +235,7 @@ NSString *SMNotSortableDataException = @"SMNotSortableDataException";
             [tableViewUpdates.addedRowIndexPaths addObject:[self indexPathForObject:object commitUpdates:NO]];
         }
         
-        // Reset flags and array comparison
+        // Reset flags and content updates
         
         self.shouldUpdateTable = NO;
         self.shouldDumpTableData = NO;
